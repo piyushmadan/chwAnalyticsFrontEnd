@@ -1,0 +1,57 @@
+/*.row-index {
+    width: 50px;
+    display: inline-block;
+}
+*/
+/*#formStatusReportDiv .bootstrap-table .fixed-table-container{
+ height:300px !important;     
+}
+*//*
+tbody{
+  overflow-y: scroll;
+  height: 200px;
+  width: 100%;
+  position: absolute;
+}
+*/
+//
+// So that I can colors in print of the table
+//http://stackoverflow.com/questions/15658449/css-scss-bootstrap-override-print-settings-in-bootstrap-change-background
+/*@media print { 
+    .table td, .table th { 
+        background-color: blue !important; 
+    } 
+}
+*/
+@media print {
+.table td, .table th  {-webkit-print-color-adjust: exact;}
+}
+
+
+body {
+  -webkit-print-color-adjust: exact;
+}
+
+
+/*
+// To add details on footer
+@media screen {
+    div.divFooter {
+        display: none;
+    }
+}
+@media print {
+    div.divFooter {
+        position: fixed;
+        bottom: 0;
+    }
+}
+
+@media print {
+    div.formStatusReportOptions {
+        position: fixed;
+        bottom: 0;
+    }
+}*/
+
+

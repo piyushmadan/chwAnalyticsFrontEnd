@@ -1,0 +1,28 @@
+//
+// So that I can colors in print of the table
+// Change settings in FireFox
+
+//http://stackoverflow.com/questions/3893986/css-media-print-issues-with-background-color
+
+//http://stackoverflow.com/questions/15658449/css-scss-bootstrap-override-print-settings-in-bootstrap-change-background
+
+.table td, .table th { 
+        background-color: blue !important; 
+} 
+
+.table td, .table th  {-webkit-print-color-adjust: exact;}
+
+
+body {
+	background: blue
+}
+
+/*  @media print {
+    .bg-danger {
+      background-color: #f2dede !important;
+    }
+
+    .table td {
+      background-color: transparent !important;
+    }
+  }*/
