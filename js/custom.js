@@ -9,4 +9,9 @@ $(document).ready(function () {
         todayBtn: "linked"
     });
 
+//	$("#dashboard_graphs").load("html/dashboard.html");
+
+	$('.dropdown-toggle').dropdown();
+
+
 });

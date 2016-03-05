@@ -1,0 +1,147 @@
+<script src="js/reporting_comparision_health_worker.js"></script>
+
+<div class="form-inline" hidden>
+    <button type="button" 
+            class="btn btn-default mybtn-top">
+        Scroll to top
+    </button>
+    <button type="button" 
+            class="btn btn-default mybtn-row">
+        Scroll to row index: 
+    </button>
+        <input type="number" 
+               class="form-control row-index" 
+               value="3" min="0">
+    <button type="button" 
+            class="btn btn-default mybtn-btm">
+        Scroll to bottom
+    </button>
+</div>
+
+<form class="form-group" id="formStatusReportOptions" onsubmit="resultTable.updateOptions()">
+
+  <label for="formStatusReportDateRange">Date Range:</label>
+
+  <div class="input-daterange" id="formStatusReportDateRange">
+      <input type="text" class="input-small" name="start" value="01/01/2015"/>  to
+      <!-- <span class="add-on" style="vertical-align: top;height:20px ; hidden:true">to</span> -->
+      <input type="text" class="input-small" name="end" value="10/10/2016" />
+  </div>
+<br>
+
+  <label for="formStatusReportAggregator">Aggregate on:</label>
+  <select class="form-control" id="formStatusReportAggregator">
+    <option>STATUS</option>
+  </select>
+<br>
+
+  <label for="formStatusReportGroupBy">Group by:</label>
+  <select class="form-control" id="formStatusReportGroupBy">
+    <option>sector_id</option>
+    <option>role_id</option>
+    <option>jweek_id</option>
+    <option>scheduleUser_id</option>
+    <option>formToGenerate_id</option>
+  </select>
+
+<br>
+  <label for="formStatusReportGroupBy">Filter Forms:</label>
+<br>
+<select class="selectpicker" multiple>
+  <option>Mustard</option>
+  <option>Ketchup</option>
+  <option>Relish</option>
+</select>
+
+<br>
+<br>
+
+
+  <button type="submit" class="btn btn-default">Submit</button>
+
+</form>
+
+
+<div style="padding: 10px; height:100px " id="formStatusReportDiv"  >
+    <br>
+    <table id="tableFormStatusReport" 
+    class="table table-striped"
+    data-url="http://localhost:3000/CHWScoringIndicator1"
+    data-query-params="resultTable.dataFromUrl"
+    data-method="get"
+    data-content-type="application/json"
+    data-response-handler="resultTable.responseHandler"
+    data-cell-style="resultTable.cellStyle"
+    data-search="true" 
+    data-show-columns="true" 
+    >
+    <!-- data-pagination="true" 
+  data-page-list="[10, 25, 50, 100, 500, All]"
+    -->
+        <thead>
+            <tr>
+                <th data-visible="true" data-field="tlPinId" data-sortable="true">TLPIN</th>
+                <th data-visible="true" data-field="sectorId" data-sortable="true">Sector Id</th>
+                <th data-visible="true" data-field="scheduleUser_id" data-sortable="true">Schedule User Id</th>
+                <th      data-cell-style="resultTable.cellStyle" data-field="rank_one" data-sortable="true">Rank_one </th>
+                <th data-field="percentage_one" data-sortable="true" width="200">Active</th>
+                <th data-field="rank_six" data-sortable="true">Rank_one </th>
+                <th data-field="percentage_six" data-sortable="true" width="200">Active</th>
+                <th data-field="rank_tnine" data-sortable="true">Rank_one </th>
+                <th data-field="percentage_tnine" data-sortable="true" width="200">Active</th>
+                <th data-field="rank_thirty" data-sortable="true">Rank_one </th>
+                <th data-field="percentage_thirty" data-sortable="true" width="200">Active</th>
+                <th data-field="rank_thrity1" data-sortable="true">Rank_one </th>
+                <th data-field="percentage_thrity1" data-sortable="true" width="200">Active</th>
+                <th data-field="rank_thrity2" data-sortable="true">Rank_one </th>
+                <th data-field="percentage_thrity2" data-sortable="true" width="200">Active</th>
+                <th data-field="rank_anc" data-sortable="true">Rank_one </th>
+                <th data-field="percentage_anc" data-sortable="true" width="200">Active</th>
+                <th data-field="rank_vs29" data-sortable="true">Rank_one </th>
+                <th data-field="percentage_vs29" data-sortable="true" width="200">Active</th>                
+                <th data-field="rank_vs43" data-sortable="true">VS43 Rank </th>
+                <th data-field="percentage_vs43" data-sortable="true" width="200">VS43 %</th>
+
+
+
+            </tr>
+        </thead>
+    </table>
+</div>
+
+
+<!-- <div style="padding: 10px; ">
+    <br>
+    <table id="table" data-search="true" data-show-columns="true" data-pagination="true" data-height="250">
+        <thead>
+            <tr>
+                <th data-field="stargazers_count" data-sortable="true">Stars</th>
+                <th data-field="name" data-sortable="true" width="200">Name</th>
+                <th data-field="forks_count" data-sortable="true">Forks</th>
+                <th data-field="description" data-sortable="true">Description</th>
+            </tr>
+        </thead>
+    </table>
+</div> -->
+
+
+
+
+<!--       <div class="row">
+
+        <div class="col-sm-9 col-md-12 main">
+          <h1 class="page-header">Key indicators for FD</h1>
+
+
+
+
+          <h2 class="sub-header">Weekly Statistical Graph</h2>
+          
+
+                <div id="chart_div5" class="gchart col-md-12"></div>
+
+  
+
+
+        </div>
+      </div> -->

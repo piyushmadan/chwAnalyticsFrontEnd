@@ -1,67 +1,62 @@
-demo_data = [{
-    "name": "bootstrap-table",
-        "stargazers_count": "10",
-        "forks_count": "122",
-        "description": "An extended Bootstrap table"
-}, {
-    "name": "multiple-select",
-        "stargazers_count": "288",
-        "forks_count": "20",
-        "description": "A jQuery plugin to select multiple elements with checkboxes :)"
-}, {
-    "name": "bootstrap-table",
-        "stargazers_count": "32",
-        "forks_count": "11",
-        "description": "Show/hide password plugin for twitter bootstrap."
-}, {
-    "name": "bootstrap-table",
-        "stargazers_count": "1",
-        "forks_count": "4",
-        "description": "my blog"
-}, {
-    "name": "scutech-redmine 1",
-        "stargazers_count": "50",
-        "forks_count": "3",
-        "description": "Redmine notification tools for chrome extension."
-}];
-
-$(function () {
-
-    var url = "http://localhost:3000/"
-
-   // $("#dashboard_graphs").hide();
-
+    var url = config.apiUrl ;
 
     resultTable = {
-
         ajaxDataFromUrl:  function(){
-
-
-
         }, 
 
         responseHandler: function(res) {
             return res.result;
         },
 
-        rowStyle: function(value, row, index) {
+        // rowStyle: function(value, row, index) {
 
-                    if(value.percentage>80){
-                        return{
-                            css: {"background-color": "green !important"}
-                        };                        
-                    }
-                    if(value.percentage>60){
-                        return{
-                            css: {"background-color": "yellow !important"}
-                        };                        
-                    }
+        //             if(value.percentage>80){
+        //                 return{
+        //                     css: {"background-color": "green !important"}
+        //                 };                        
+        //             }
+        //             if(value.percentage>60){
+        //                 return{
+        //                     css: {"background-color": "yellow !important"}
+        //                 };                        
+        //             }
 
-                        return{
-                            css: {"background-color": "red !important"}
+        //                 return{
+        //                     css: {"background-color": "red !important"}
+        //                 };                        
+
+        //         },
+
+        cellStyle: function(value, row, index) {
+
+//            console.log(arguments);
+
+            console.log(value);
+
+                    // if(value.percentage>80){
+                    //     return{
+                    //         css: {"background-color": "green !important"}
+                    //     };                        
+                    // }
+                    // if(value.percentage>60){
+                    //     return{
+                    //         css: {"background-color": "yellow !important"}
+                    //     };                        
+                    // }
+
+    var classes = ['active', 'success', 'info', 'warning', 'danger'];
+
+                        return {
+                        css: {"color": "blue !important" , "font-size": "50px", "background-color": "red !important"},
+                    //        css: {"background-color": "red !important"}
+                        classes: classes[index / 2]
+
                         };                        
 
                 },
+
+
+
 
         updateOptions: function(){
 
@@ -69,17 +64,12 @@ $(function () {
             var startDate = new Date($("#formStatusReportDateRange  [name='start']").val()).toISOString().slice(0,10);
             var endDate = new Date($("#formStatusReportDateRange  [name='end']").val()).toISOString().slice(0,10);
 
-            var newUrl = url + "formStatusReport?aggregator="+$("#formStatusReportAggregator").val()+"&groupBy="+$("#formStatusReportGroupBy").val()+"&startDate="+startDate+"&endDate="+endDate
+            var newUrl = url + "CHWScoringIndicator1?aggregator="+$("#formStatusReportAggregator").val()+"&groupBy="+$("#formStatusReportGroupBy").val()+"&startDate="+startDate+"&endDate="+endDate
 
             console.log("update new report using from : " + newUrl)
 
             $('#tableFormStatusReport').bootstrapTable('refresh',
                     {url: newUrl});
-
-
-
-
-
 
 
             $('#tableFormStatusReport').on(
@@ -124,33 +114,15 @@ $(function () {
                 };
               }
             )
-
-
-
-
-
-
-
-
         }
 
 
     }
 
 
-
-
-
-
-
     $('#tableFormStatusReport').bootstrapTable({
        // data: demo_data
     });
-
-
-
-
-
 
 
     $(".mybtn-top").click(function () {
@@ -171,5 +143,3 @@ $(function () {
     $(".mybtn-btm").click(function () {
         $('#table').bootstrapTable('scrollTo', 'bottom');
     });
-
-});

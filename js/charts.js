@@ -1,6 +1,6 @@
 // https://docs.google.com/document/d/1vIIMDohNfs4Jf5o_r8svLCLTCziH8yWoDtjIYBb3s_A/edit
   
-    config
+//    config
 
      // Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart','bar','BarChart','geochart']});

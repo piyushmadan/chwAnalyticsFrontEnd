@@ -33,10 +33,67 @@
     <link rel="stylesheet" type="text/css" media="print" href="css/print.css">
 
 
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Monitoring Research Layer</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse ">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">FWA</a></li>
+            <li><a href="#dashboard_graphs" onclick="$('#dashboard_graphs').load('html/dashboard.html');">FD</a></li>
+            <li><a href="#">Overview</a></li>
+            <li><a href="#formStatusReportDateRange" onclick="$('#reporting_1').load('html/reporting_1.html');$('#dashboard_graphs').hide()">Reporting</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#Page1"
+onclick="$('#reporting_comparision_health_worker').load('html/reporting_comparision_health_worker.html');"
+
+        >Page 1 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Page 1-1</a></li>
+          <li><a href="#">Page 1-2</a></li>
+          <li><a href="#">Page 1-3</a></li> 
+        </ul>
+      </li>
+
+
+            <li>
+                <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Alert</button>
+            </li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+<!--           <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form> -->
+        </div>
+      </div>
+    </nav>
+
+ <div class="container-fluid" id="dashboard_graphs"></div>
+
+
+
+<div class="container-fluid" id="reporting_1"></div>
+<div class="container-fluid" id="reporting_comparision_health_worker"></div>
+
+
+
+
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 
     <!-- Bootstrap table -->
     <script src="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.js "></script>
@@ -57,260 +114,10 @@
      <script src="js/config.js"></script>
      <script src="js/util.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script src="js/charts.js"></script>
+<!--    <script src="js/charts.js"></script> -->
     <script src="js/custom.js"></script>
-    <script src="js/table.js"></script>
+<!--    <script src="js/table.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/js/bootstrap-datepicker.min.js"></script>
-
-
-
-  </head>
-  <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Monitoring Research Layer</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">FWA</a></li>
-            <li><a href="#dashboard_graphs" >FD</a></li>
-            <li><a href="#">Overview</a></li>
-            <li><a href="#formStatusReportDateRange" onclick="$('#dashboard_graphs').hide()">Reporting</a></li>
-
-            <li>
-                <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Alert</button>
-            </li>
-            <li><a href="#">Logout</a></li>
-          </ul>
-<!--           <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form> -->
-        </div>
-      </div>
-    </nav>
-
- <div class="container-fluid" id="dashboard_graphs">
-      <div class="row">
-        <div class="col-sm-0 col-md-0 "  hidden>
-          <ul class="nav nav-sidebar" hidden>
-            <li class="active"><a href="#">FWA <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">FD</a></li>
-            <li><a href="#">FWA and FD</a></li>
-          </ul>
-        </div>
-        <div class="col-sm-9 col-md-12 main">
-          <h1 class="page-header">Key indicators for FD</h1>
-
-          <div class="row placeholders">
-            <!-- <div class="col-xs-6 col-sm-3 placeholder"> -->
-                <!-- <div id="chart_div"  class="gchart col-md-0 placeholder img-responsive"></div> -->
-
-
-                <div id="chart_div2" class="gchart row-height col-md-12 placeholder img-responsive"></div>
-
-                  <!-- <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span> -->
-            <!-- </div> -->
-<!--             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div> -->
-<!--             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>-->
-          </div> 
-
-          <h2 class="sub-header">More indicators</h2>
-
-          <div> 
-                <div hidden id="chart_div3" class="gchart col-md-6"></div>
-                <div id="chart_div4" class="gchart col-md-12"></div>
-
-
-          </div>
-
-          <h2 class="sub-header">Weekly Statistical Graph</h2>
-          
-          <div> 
-
-                <div class="input-daterange" id="datepicker form-control" >
-                    <input type="text" class="input-small" name="start" value="01/26/2016"/>  to
-                    <!-- <span class="add-on" style="vertical-align: top;height:20px ; hidden:true">to</span> -->
-                    <input type="text" class="input-small" name="end" value="02/02/2016" />
-                </div>
-          </div>
-                <div id="chart_div5" class="gchart col-md-12"></div>
-
-          <div> 
-                          <h2 class="sub-header">Map</h2>
-
-                <div id="regions_div" style="gchart col-md-12"></div>
-
-          </div>
-          <br>
-          <div> 
-
-
-          </div>
-
-
-        </div>
-      </div>
-    </div>
-
-
-
-<div class="container-fluid">
-
-<div class="form-inline" hidden>
-    <button type="button" 
-            class="btn btn-default mybtn-top">
-        Scroll to top
-    </button>
-    <button type="button" 
-            class="btn btn-default mybtn-row">
-        Scroll to row index: 
-    </button>
-        <input type="number" 
-               class="form-control row-index" 
-               value="3" min="0">
-    <button type="button" 
-            class="btn btn-default mybtn-btm">
-        Scroll to bottom
-    </button>
-</div>
-
-<form class="form-group" id="formStatusReportOptions" onsubmit="resultTable.updateOptions()">
-
-  <label for="formStatusReportDateRange">Date Range:</label>
-
-  <div class="input-daterange" id="formStatusReportDateRange">
-      <input type="text" class="input-small" name="start" value="01/01/2015"/>  to
-      <!-- <span class="add-on" style="vertical-align: top;height:20px ; hidden:true">to</span> -->
-      <input type="text" class="input-small" name="end" value="10/10/2016" />
-  </div>
-<br>
-
-  <label for="formStatusReportAggregator">Aggregate on:</label>
-  <select class="form-control" id="formStatusReportAggregator">
-    <option>STATUS</option>
-  </select>
-<br>
-
-  <label for="formStatusReportGroupBy">Group by:</label>
-  <select class="form-control" id="formStatusReportGroupBy">
-    <option>sector_id</option>
-    <option>role_id</option>
-    <option>jweek_id</option>
-    <option>scheduleUser_id</option>
-    <option>formToGenerate_id</option>
-  </select>
-
-<br>
-  <label for="formStatusReportGroupBy">Filter Forms:</label>
-<br>
-<select class="selectpicker" multiple>
-  <option>Mustard</option>
-  <option>Ketchup</option>
-  <option>Relish</option>
-</select>
-
-<br>
-<br>
-
-
-  <button type="submit" class="btn btn-default">Submit</button>
-
-</form>
-
-
-<div style="padding: 10px; height:100px " id="formStatusReportDiv"  >
-    <br>
-    <table id="tableFormStatusReport" 
-    class="table table-striped"
-    data-url="http://localhost:3000/formStatusReport"
-    data-query-params="resultTable.dataFromUrl"
-    data-method="get"
-    data-content-type="application/json"
-    data-response-handler="resultTable.responseHandler"
-    data-row-style="resultTable.rowStyle"
-    data-search="true" 
-    data-show-columns="true" 
-    >
-    <!-- data-pagination="true" 
-  data-page-list="[10, 25, 50, 100, 500, All]"
-    -->
-        <thead>
-            <tr>
-                <th data-visible="true" data-field="tlPinId" data-sortable="true">TLPIN</th>
-                <th data-visible="true" data-field="sectorId" data-sortable="true">Sector Id</th>
-                <th data-field="group_by_attribute" data-sortable="true">Value</th>
-                <th data-field="active" data-sortable="true" width="200">Active</th>
-                <th data-field="cancelled" data-sortable="true">Cancelled </th>
-                <th data-field="done" data-sortable="true">Done</th>
-                <th data-field="percentage" data-sortable="true">Percentage</th>
-            </tr>
-        </thead>
-    </table>
-</div>
-
-
-<!-- <div style="padding: 10px; ">
-    <br>
-    <table id="table" data-search="true" data-show-columns="true" data-pagination="true" data-height="250">
-        <thead>
-            <tr>
-                <th data-field="stargazers_count" data-sortable="true">Stars</th>
-                <th data-field="name" data-sortable="true" width="200">Name</th>
-                <th data-field="forks_count" data-sortable="true">Forks</th>
-                <th data-field="description" data-sortable="true">Description</th>
-            </tr>
-        </thead>
-    </table>
-</div> -->
-
-
-
-
-<!--       <div class="row">
-
-        <div class="col-sm-9 col-md-12 main">
-          <h1 class="page-header">Key indicators for FD</h1>
-
-
-
-
-          <h2 class="sub-header">Weekly Statistical Graph</h2>
-          
-
-                <div id="chart_div5" class="gchart col-md-12"></div>
-
-  
-
-
-        </div>
-      </div> -->
-    </div>
-
-
-
-
 
 
 
