@@ -27,7 +27,17 @@
       <!-- <span class="add-on" style="vertical-align: top;height:20px ; hidden:true">to</span> -->
       <input type="text" class="input-small" name="end" value="10/10/2016" />
   </div>
-<br>
+
+
+  <div class="checkbox" id="indicatorFilter" >
+    <label><input type="checkbox" value="1">Indicator 1 (form completion percentage) </label> <br>
+    <label><input type="checkbox" value="2">Indicator 2 (form completion time) </label> <br>
+    <label><input type="checkbox" value="3" >Indicator 3 (time to upload data)</label> <br>
+ </div>
+
+
+
+<!-- <br>
 
   <label for="formStatusReportAggregator">Aggregate on:</label>
   <select class="form-control" id="formStatusReportAggregator">
@@ -53,7 +63,9 @@
   <option>Relish</option>
 </select>
 
-<br>
+<br> -->
+Ranking based on Indicator 1 (Performance %)
+
 <br>
 
 
@@ -82,8 +94,36 @@
             <tr>
                 <th data-visible="true" data-field="tlPinId" data-sortable="true">TLPIN</th>
                 <th data-visible="true" data-field="sectorId" data-sortable="true">Sector Id</th>
-                <th data-visible="true" data-field="scheduleUser_id" data-sortable="true">Schedule User Id</th>
-                <th      data-cell-style="resultTable.cellStyle" data-field="rank_one" data-sortable="true">Rank_one </th>
+                <th data-visible="true" data-field="name" data-sortable="true">Name</th>
+                <th data-visible="true" data-field="scheduleUser_id" data-sortable="true">UserId</th>
+                <th data-visible="true" data-field="cummulate_score_1"  data-sorter="resultTable.sortConsideringNull" data-sortable="true">total_commulative</th>
+                <th data-visible="true" data-field="cummulate_score_1"  data-sorter="resultTable.sortConsideringNull" data-sortable="true">cummulate <br> _score_1</th>
+                <th data-visible="true" data-field="cummulate_score_2"  data-sorter="resultTable.sortConsideringNull" data-sortable="true">cummulate<br> _score_2</th>
+                <th data-visible="true" data-field="cummulate_score_3"  data-sorter="resultTable.sortConsideringNull" data-sortable="true">cummulate<br>_score_3</th>
+
+                <th data-field="rank_percentage_one" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_1</th>
+                <th data-field="rank_percentage_six" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_6</th>
+                <th data-field="rank_percentage_tnine" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_29</th>
+                <th data-field="rank_percentage_thirty" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_30</th>
+                <th data-field="rank_percentage_thrity1" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_31</th>
+                <th data-field="rank_percentage_thrity2" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_32</th>
+                <th data-field="rank_percentage_anc" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_ANC</th>
+                <th data-field="rank_percentage_vs29" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_VS29</th>
+                <th data-field="rank_percentage_vs43" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_VS43</th>
+
+                <th data-field="sender_id" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">sender_id</th>
+
+                <th data-field="result_value_2_census" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">2_census</th>
+                <th data-field="result_value_2_psrf" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">2_psrf</th>
+                <th data-field="result_value_2_pvf" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">2_pvf</th>
+                <th data-field="result_value_2_rest" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200"> 2_rest</th>
+                <th data-field="sum_rank_2" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200"> sum_rank_2</th>
+
+
+                <th data-field="avgEndToReceiveTime" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">avg <br> form end <br> To server <br> receive Time</th>
+                <th data-field="sum_rank_3" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200"> sum_rank_3</th>
+
+<!--                 <th data-field="rank_one" data-sortable="true">Rank_one </th>
                 <th data-field="percentage_one" data-sortable="true" width="200">Active</th>
                 <th data-field="rank_six" data-sortable="true">Rank_one </th>
                 <th data-field="percentage_six" data-sortable="true" width="200">Active</th>
@@ -100,7 +140,7 @@
                 <th data-field="rank_vs29" data-sortable="true">Rank_one </th>
                 <th data-field="percentage_vs29" data-sortable="true" width="200">Active</th>                
                 <th data-field="rank_vs43" data-sortable="true">VS43 Rank </th>
-                <th data-field="percentage_vs43" data-sortable="true" width="200">VS43 %</th>
+                <th data-field="percentage_vs43" data-sortable="true" width="200">VS43 %</th> -->
 
 
 

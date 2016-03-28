@@ -30,30 +30,106 @@
         cellStyle: function(value, row, index) {
 
 //            console.log(arguments);
+            if(!value){
+                        return{
+                            css: {"background-color": "lightgrey !important"}
+                        };  
+                }
 
-            console.log(value);
+            var value_1 = value.toString().split(" (") || 0;
+            if(value_1.length>1){
+                var value_2 = value_1[1].split("%")[0];
+                var value_percentage = parseInt(value_2);
+            } else {
+                var value_percentage = -1;
+            }        
 
-                    // if(value.percentage>80){
-                    //     return{
-                    //         css: {"background-color": "green !important"}
-                    //     };                        
-                    // }
-                    // if(value.percentage>60){
-                    //     return{
-                    //         css: {"background-color": "yellow !important"}
-                    //     };                        
-                    // }
 
-    var classes = ['active', 'success', 'info', 'warning', 'danger'];
+           // console.log(value);
 
-                        return {
-                        css: {"color": "blue !important" , "font-size": "50px", "background-color": "red !important"},
-                    //        css: {"background-color": "red !important"}
-                        classes: classes[index / 2]
-
+                    if(value_percentage>80){
+                        return{
+                            css: {"background-color": "green !important"}
                         };                        
+                    }
+                    if(value_percentage>=60){
+                        return{
+                            css: {"background-color": "yellow !important"}
+                        };                        
+                    }
+                    if(value_percentage>0){
+                        return{
+                            css: {"background-color": "red !important"}
+                        };                        
+                    }
+
+
+
+                        return{
+                            css: {"background-color": "lightgrey !important"}
+                        };    
+
+    // var classes = ['active', 'success', 'info', 'warning', 'danger'];
+
+    //                     return {
+    //                     css: {"color": "blue !important" , "font-size": "50px", "background-color": "red !important"},
+    //                 //        css: {"background-color": "red !important"}
+    //                     classes: classes[index / 2]
+
+    //                     };                        
 
                 },
+
+        rankPercSorter : function(a,b) {
+
+            if( !a ) {
+                return 1;
+            }
+
+            if( !b) {
+                return -1;
+            }
+
+
+            if(a.split(" (").length>1){
+                a = parseInt(a.split(" (")[0]);
+            }
+
+
+            if(b.split(" (").length>1){
+                b = parseInt(b.split(" (")[0]);
+            }
+
+            console.log("-");
+            console.log(a)
+            console.log(b)
+
+
+            if (a < b) return -1;
+            if (a > b) return 1;
+            return 0;
+
+
+
+        },        
+
+        sortConsideringNull : function(a,b) {
+
+            if( !a ) {
+                return 1;
+            }
+
+            if( !b) {
+                return -1;
+            }
+
+            if (a < b) return -1;
+            if (a > b) return 1;
+            return 0;
+
+
+
+        },     
 
 
 

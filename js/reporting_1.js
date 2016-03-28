@@ -37,10 +37,14 @@
 
             var newUrl = url + "formStatusReport?aggregator="+$("#formStatusReportAggregator").val()+"&groupBy="+$("#formStatusReportGroupBy").val()+"&startDate="+startDate+"&endDate="+endDate
 
+                 newUrl+= "&indicator1="+    
             console.log("update new report using from : " + newUrl)
 
             $('#tableFormStatusReport').bootstrapTable('refresh',
-                    {url: newUrl});
+                    {
+                        url: newUrl,
+                        timeout: 100
+                    });
 
 
             $('#tableFormStatusReport').on(
