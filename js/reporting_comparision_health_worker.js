@@ -29,13 +29,68 @@
 
         cellStyle: function(value, row, index) {
 
-//            console.log(arguments);
             if(!value){
                         return{
                             css: {"background-color": "lightgrey !important"}
                         };  
                 }
 
+                //Cell Styling for indicator 3 - time to upload form
+                if(value == row["avgEndToReceiveTime"]){
+                    // RED IS MORE THAN 6 hours
+                    if(value>360){
+                        return{
+                            css: {"background-color": "red !important"}
+                        };                        
+                    }
+                    // 60 to 360 mins in Yellow
+                    if(value>=60){
+                        return{
+                            css: {"background-color": "yellow !important"}
+                        };                        
+                    }
+                    // less than 60 mins in green
+                    if(value>0){
+                        return{
+                            css: {"background-color": "green !important"}
+                        };                        
+                    }
+                }
+
+
+                //Cell Styling for indicator 2 - time of completion
+                var indicator2 = ["census","psrf","pvf"];
+                for(var i = 0; i<indicator2.length; i++) {
+
+
+                    if(value == row["rank_value_2_"+ indicator2[i]]){
+                        var value_timeToComplete = parseInt(value.split("(")[1].split(")")[0])
+                        var sd = CHWScoringIndicatorStatistics[indicator2[i]].sd ;
+                        var mean = CHWScoringIndicatorStatistics[indicator2[i]].avg ;
+
+                        // Green within 1/2 std deviation
+                        if(value_timeToComplete<= (mean + (sd/2) ) && value_timeToComplete >= (mean - (sd/2) ) ) {
+                            return{
+                                css: {"background-color": "green !important"}
+                            };                        
+                        }
+                        // Yellow within 1 std deviation
+                        if(value_timeToComplete<= (mean + sd ) && value_timeToComplete >= (mean - sd)  ) {
+                            return{
+                                css: {"background-color": "yellow !important"}
+                            };                        
+                        }
+                        // Otherwise red
+                        if(value_timeToComplete) {
+                            return{
+                                css: {"background-color": "red !important"}
+                            };      
+                        }                  
+                    }           
+                }
+
+
+            //Cell Styling for indicator 1 - completion %
             var value_1 = value.toString().split(" (") || 0;
             if(value_1.length>1){
                 var value_2 = value_1[1].split("%")[0];
@@ -44,8 +99,6 @@
                 var value_percentage = -1;
             }        
 
-
-           // console.log(value);
 
                     if(value_percentage>80){
                         return{
@@ -81,6 +134,9 @@
                 },
 
         rankPercSorter : function(a,b) {
+
+            console.log(arguments);
+            console.log("******");
 
             if( !a ) {
                 return 1;
@@ -140,7 +196,10 @@
             var startDate = new Date($("#formStatusReportDateRange  [name='start']").val()).toISOString().slice(0,10);
             var endDate = new Date($("#formStatusReportDateRange  [name='end']").val()).toISOString().slice(0,10);
 
-            var newUrl = url + "CHWScoringIndicator1?aggregator="+$("#formStatusReportAggregator").val()+"&groupBy="+$("#formStatusReportGroupBy").val()+"&startDate="+startDate+"&endDate="+endDate
+            var newUrl = url + "CHWScoringIndicator?aggregator="+$("#formStatusReportAggregator").val()+"&groupBy="+$("#formStatusReportGroupBy").val()+"&startDate="+startDate+"&endDate="+endDate;
+            //indicator 1, 2 and 3 
+            newUrl+= "&indicator1="+ $("#indicatorFilter [value=1]:checked").length + "&indicator2=" + $("#indicatorFilter [value=2]:checked").length + "&indicator3=" + $("#indicatorFilter [value=3]:checked").length;
+
 
             console.log("update new report using from : " + newUrl)
 
@@ -219,3 +278,31 @@
     $(".mybtn-btm").click(function () {
         $('#table').bootstrapTable('scrollTo', 'bottom');
     });
+
+    // Setting CHWScoringIndicatorStatistics for Cell Styling (using avg and sd)
+    if(!localStorage.getItem("CHWScoringIndicatorStatistics")){
+        console.log("will check localStorage");
+        $.ajax( config.apiUrl + "CHWScoringIndicatorStatistics" )
+         .done(function(result, msg) {
+            localStorage.setItem('CHWScoringIndicatorStatistics', JSON.stringify(result));
+            console.log(arguments);
+          });
+    }
+
+    var CHWScoringIndicatorStatistics = new Object();
+
+    var temp_CHWScoringIndicatorStatistics =  JSON.parse(localStorage.getItem('CHWScoringIndicatorStatistics')).result
+
+    for(var i=0; i <temp_CHWScoringIndicatorStatistics.length; i++)
+    { 
+             
+        CHWScoringIndicatorStatistics[temp_CHWScoringIndicatorStatistics[i].indicatorAggregator] = {
+                sd: temp_CHWScoringIndicatorStatistics[i].sd,
+                avg: temp_CHWScoringIndicatorStatistics[i].avg,
+                indicatorType: temp_CHWScoringIndicatorStatistics[i].indicatorType
+            }
+    } 
+
+
+
+

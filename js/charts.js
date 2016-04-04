@@ -1,7 +1,7 @@
 // https://docs.google.com/document/d/1vIIMDohNfs4Jf5o_r8svLCLTCziH8yWoDtjIYBb3s_A/edit
   
 //    config
-
+      console.log("in charts.js");
      // Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart','bar','BarChart','geochart']});
 
@@ -75,7 +75,7 @@
       function drawAreaChart() {
 
           $.ajax({
-            url: config.apiUrl+"/FormStatusCount",
+            url: config.apiUrl+"FormStatusCount",
             context: document.body
           }).done(function(result) {
             console.log(arguments);
@@ -152,7 +152,7 @@ function drawStacked() {
       function drawBarChart() {
 
           $.ajax({
-            url: config.apiUrl+"/FormUnitDataCount",
+            url: config.apiUrl+"FormUnitDataCount",
             context: document.body
           }).done(function(result) {
             console.log(arguments);

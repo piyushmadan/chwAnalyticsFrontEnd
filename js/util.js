@@ -1,5 +1,20 @@
 Util = {
 
+	showHtmlElement: function(ArrayOfIdToShow){
+
+		var listOfIdsToHideOnIndex =  ["login","dashboard_graphs","reporting_1","reporting_comparision_health_worker"];
+
+		for(var i=0; i<listOfIdsToHideOnIndex.length; i++){
+				$("#"+listOfIdsToHideOnIndex[i]).hide();
+		}
+
+		for(var i=0; i<ArrayOfIdToShow.length; i++){
+
+			$("#"+ArrayOfIdToShow[i].id).show().load(ArrayOfIdToShow[i].html);
+			console.log(ArrayOfIdToShow[i]);
+		}
+
+	},
 	apiToArray : function(data , ArrayOfObjectName, ArrayOfObjectLegendTitle){
 
 		  //JSON to following structure 

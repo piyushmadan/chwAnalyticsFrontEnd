@@ -30,9 +30,9 @@
 
 
   <div class="checkbox" id="indicatorFilter" >
-    <label><input type="checkbox" value="1">Indicator 1 (form completion percentage) </label> <br>
+    <label><input type="checkbox" value="1" checked>Indicator 1 (form completion percentage) </label> <br>
     <label><input type="checkbox" value="2">Indicator 2 (form completion time) </label> <br>
-    <label><input type="checkbox" value="3" >Indicator 3 (time to upload data)</label> <br>
+    <label><input type="checkbox" value="3" checked>Indicator 3 (time to upload data)</label> <br>
  </div>
 
 
@@ -64,7 +64,6 @@
 </select>
 
 <br> -->
-Ranking based on Indicator 1 (Performance %)
 
 <br>
 
@@ -78,15 +77,21 @@ Ranking based on Indicator 1 (Performance %)
     <br>
     <table id="tableFormStatusReport" 
     class="table table-striped"
-    data-url="http://localhost:3000/CHWScoringIndicator1"
+    data-url="http://localhost:3000/CHWScoringIndicator"
     data-query-params="resultTable.dataFromUrl"
     data-method="get"
     data-content-type="application/json"
     data-response-handler="resultTable.responseHandler"
     data-cell-style="resultTable.cellStyle"
-    data-search="true" 
-    data-show-columns="true" 
+    data-search="false" 
+    data-show-columns="true"
+    data-show-export="true"
+    data-export-types="['excel', 'json', 'xml']"
+    data-page-list="[10, 25, 50, 100, ALL]"
+    data-minimum-count-columns="5"
     >
+    <!-- data-show-columns="true"  -->
+
     <!-- data-pagination="true" 
   data-page-list="[10, 25, 50, 100, 500, All]"
     -->
@@ -96,10 +101,10 @@ Ranking based on Indicator 1 (Performance %)
                 <th data-visible="true" data-field="sectorId" data-sortable="true">Sector Id</th>
                 <th data-visible="true" data-field="name" data-sortable="true">Name</th>
                 <th data-visible="true" data-field="scheduleUser_id" data-sortable="true">UserId</th>
-                <th data-visible="true" data-field="cummulate_score_1"  data-sorter="resultTable.sortConsideringNull" data-sortable="true">total_commulative</th>
+                <th data-visible="true" data-field="total_commulative_rank"  data-sorter="resultTable.sortConsideringNull" data-sortable="true">total_ <br> commulative <br> _rank sum </th>
                 <th data-visible="true" data-field="cummulate_score_1"  data-sorter="resultTable.sortConsideringNull" data-sortable="true">cummulate <br> _score_1</th>
                 <th data-visible="true" data-field="cummulate_score_2"  data-sorter="resultTable.sortConsideringNull" data-sortable="true">cummulate<br> _score_2</th>
-                <th data-visible="true" data-field="cummulate_score_3"  data-sorter="resultTable.sortConsideringNull" data-sortable="true">cummulate<br>_score_3</th>
+                <th data-visible="true" data-field="sum_rank_3"  data-sorter="resultTable.sortConsideringNull" data-sortable="true">cummulate<br>_score_3</th>
 
                 <th data-field="rank_percentage_one" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_1</th>
                 <th data-field="rank_percentage_six" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_6</th>
@@ -111,12 +116,12 @@ Ranking based on Indicator 1 (Performance %)
                 <th data-field="rank_percentage_vs29" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_VS29</th>
                 <th data-field="rank_percentage_vs43" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_VS43</th>
 
-                <th data-field="sender_id" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">sender_id</th>
-
-                <th data-field="result_value_2_census" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">2_census</th>
-                <th data-field="result_value_2_psrf" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">2_psrf</th>
-                <th data-field="result_value_2_pvf" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">2_pvf</th>
-                <th data-field="result_value_2_rest" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200"> 2_rest</th>
+<!--                 <th data-field="sender_id" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">sender_id</th>
+ -->
+                <th data-field="rank_value_2_census" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">2_census</th>
+                <th data-field="rank_value_2_psrf" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">2_psrf</th>
+                <th data-field="rank_value_2_pvf" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">2_pvf</th>
+                <th data-field="rank_value_2_rest" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200"> 2_rest</th>
                 <th data-field="sum_rank_2" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200"> sum_rank_2</th>
 
 

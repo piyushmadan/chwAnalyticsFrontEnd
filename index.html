@@ -27,11 +27,14 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
 
-
+    <link href="css/login.css" rel="stylesheet">
     <link href="css/dashboard.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/table.css">
     <link rel="stylesheet" type="text/css" media="print" href="css/print.css">
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+    <script src="js/charts.js"></script> 
 
 
 
@@ -51,12 +54,12 @@
         <div id="navbar" class="navbar-collapse collapse ">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">FWA</a></li>
-            <li><a href="#dashboard_graphs" onclick="$('#dashboard_graphs').load('html/dashboard.html');">FD</a></li>
+            <li id="FDnav"><a  href="#dashboard_graph">FD</a></li>
             <li><a href="#">Overview</a></li>
-            <li><a href="#formStatusReportDateRange" onclick="$('#reporting_1').load('html/reporting_1.html');$('#dashboard_graphs').hide()">Reporting</a></li>
+            <li><a href="#formStatusReportDateRange" onclick="$('#reporting_1').load('html/reporting_1.html'); $('#dashboard_graphs').hide()">Reporting</a></li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#Page1"
-onclick="$('#reporting_comparision_health_worker').load('html/reporting_comparision_health_worker.html');"
+onclick="$('#reporting_comparision_health_worker').load('html/reporting_comparision_health_worker.html'); $('#dashboard_graphs , #reporting_1').hide();"
 
         >Page 1 <span class="caret"></span></a>
         <ul class="dropdown-menu">
@@ -78,6 +81,8 @@ onclick="$('#reporting_comparision_health_worker').load('html/reporting_comparis
         </div>
       </div>
     </nav>
+
+ <div class="container-fluid" id="login"></div>
 
  <div class="container-fluid" id="dashboard_graphs"></div>
 
@@ -113,15 +118,20 @@ onclick="$('#reporting_comparision_health_worker').load('html/reporting_comparis
  -->
      <script src="js/config.js"></script>
      <script src="js/util.js"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<!--     <script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
+
 <!--    <script src="js/charts.js"></script> -->
-    <script src="js/custom.js"></script>
 <!--    <script src="js/table.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/js/bootstrap-datepicker.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/export/bootstrap-table-export.js"></script>
+
+    <script src="https://rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js"></script>
 
 
 
+     <script src="js/custom.js"></script>
 
   </body>
 </html>

@@ -1,4 +1,38 @@
-      <script src="js/charts.js"></script>
+  <!--  <script src="js/charts.js"></script> 
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
+
+    </script> -->
+
+    <script type='text/javascript'>
+
+        // $.getScript("https://www.gstatic.com/charts/loader.js").done(function(){
+
+        //     $.getScript("js/charts.js")
+
+        // });
+
+        function LoadGoogle()
+        {
+            if(typeof google != 'undefined' && google && google.load)
+            {
+                // Now you can use google.load() here...
+                console.log("loading charts");
+                $.getScript("js/charts.js");
+                // $.getScript("../js/charts.js");
+                     }
+            else
+            {
+                // Retry later...
+                console.log("retry");
+                setTimeout(LoadGoogle, 30);
+            }
+        }
+
+        LoadGoogle();
+    </script>
+
+
       <div class="row">
         <div class="col-sm-0 col-md-0 "  hidden>
           <ul class="nav nav-sidebar" hidden>
@@ -74,3 +108,9 @@
 
         </div>
       </div>
+
+
+  <!-- 
+   <script type="text/javascript" src="js/charts.js"></script>
+
+-->
