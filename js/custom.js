@@ -8,12 +8,28 @@ $(document).ready(function () {
 
 
 
-	if(!localStorage.getItem('auth')){
-		console.log("login");
-		Util.showHtmlElement([{id:"login",html:"html/login.html"}]);
-
+	if(sessionStorage.getItem("authorization")){
+		$.ajax({
+			    type: "GET",
+			    url: config.apiUrl + "login",
+			    dataType: 'json',
+			    beforeSend: function(xhr) {
+			        xhr.setRequestHeader("authorization", sessionStorage.getItem("authorization"));
+			        xhr.setRequestHeader("Content-Type","application/json")
+			    },
+			    success: function (){
+			    //	sessionStorage.setItem("authorization", make_base_auth(username, password));
+			    //	location.reload();
+				//	Util.showHtmlElement([{id:"dashboard_graphs",html:"html/dashboard.html"}]);		
+				
+			    }
+			});
 //		$('#login').load('html/login.html'); 
+	} else {
+		// console.log("login");
+		Util.showHtmlElement([{id:"login",html:"html/login.html"}]);		
 	}
+
     
     $('.input-daterange').datepicker({
         todayBtn: "linked"

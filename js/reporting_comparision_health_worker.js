@@ -203,8 +203,22 @@
 
             console.log("update new report using from : " + newUrl)
 
-            $('#tableFormStatusReport').bootstrapTable('refresh',
-                    {url: newUrl});
+        $.ajax
+          ({
+            type: "GET",
+            url: newUrl,
+            dataType: 'json',
+            async : false,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("authorization", sessionStorage.getItem("authorization"));
+                xhr.setRequestHeader("Content-Type","application/json")
+            },
+            success: function (response){
+                $("#formStatusReportDiv").show();
+                $('#tableFormStatusReport').bootstrapTable('load', response.result);
+
+            }
+        });
 
 
             $('#tableFormStatusReport').on(

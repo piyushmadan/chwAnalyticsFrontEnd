@@ -35,36 +35,6 @@
     <label><input type="checkbox" value="3" checked>Indicator 3 (time to upload data)</label> <br>
  </div>
 
-
-
-<!-- <br>
-
-  <label for="formStatusReportAggregator">Aggregate on:</label>
-  <select class="form-control" id="formStatusReportAggregator">
-    <option>STATUS</option>
-  </select>
-<br>
-
-  <label for="formStatusReportGroupBy">Group by:</label>
-  <select class="form-control" id="formStatusReportGroupBy">
-    <option>sector_id</option>
-    <option>role_id</option>
-    <option>jweek_id</option>
-    <option>scheduleUser_id</option>
-    <option>formToGenerate_id</option>
-  </select>
-
-<br>
-  <label for="formStatusReportGroupBy">Filter Forms:</label>
-<br>
-<select class="selectpicker" multiple>
-  <option>Mustard</option>
-  <option>Ketchup</option>
-  <option>Relish</option>
-</select>
-
-<br> -->
-
 <br>
 
 
@@ -73,14 +43,12 @@
 </form>
 
 
-<div style="padding: 10px; height:100px " id="formStatusReportDiv"  >
+<div hidden style="padding: 10px; height:100px " id="formStatusReportDiv"  >
     <br>
-    <table id="tableFormStatusReport" 
-    class="table table-striped"
-    data-url="http://localhost:3000/CHWScoringIndicator"
+    <table  
+    id="tableFormStatusReport" 
+    class="table table-striped"    
     data-query-params="resultTable.dataFromUrl"
-    data-method="get"
-    data-content-type="application/json"
     data-response-handler="resultTable.responseHandler"
     data-cell-style="resultTable.cellStyle"
     data-search="false" 
