@@ -76,6 +76,10 @@
 
           $.ajax({
             url: config.apiUrl+"FormStatusCount",
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("authorization", sessionStorage.getItem("authorization"));
+                xhr.setRequestHeader("Content-Type","application/json")
+            },
             context: document.body
           }).done(function(result) {
             console.log(arguments);
@@ -87,25 +91,6 @@
           console.log(arrayForDataTable);
 
           var data = google.visualization.arrayToDataTable(arrayForDataTable);
-          // [
-          //   ['Year', 'Scheduled', 'Actual'],
-          //   ['Jan1',  1000,      400],
-          //   ['Jan2',  1170,      460],
-          //   ['Jan3',  660,       520],
-          //   ['Jan4',  130,      110],
-          //   ['Jan5',  100,      100],
-          //   ['Jan6',  1170,      1160],
-          //   ['Jan7',  660,       620],
-          //   ['Jan8',  1030,      940],
-          //   ['Jan9',  1000,      400],
-          //   ['Jan10',  1170,      960],
-          //   ['Jan11',  660,       620],
-          //   ['Jan12',  1030,      940],
-          //   ['Jan13',  1000,      900],
-          //   ['Jan14',  1170,      960],
-          //   ['Jan15',  660,       120],
-          //   ['Jan16',  1030,      1140],
-          // ]);
 
         var options = {
           title: 'FD\'s Performance',
@@ -153,13 +138,15 @@ function drawStacked() {
 
           $.ajax({
             url: config.apiUrl+"FormUnitDataCount",
-            context: document.body
-          }).done(function(result) {
-            console.log(arguments);
+            context: document.body,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("authorization", sessionStorage.getItem("authorization"));
+                xhr.setRequestHeader("Content-Type","application/json")
+            }
+          }).done(function(result) {            
+            console.log(config.apiUrl+"FormUnitDataCount -- before arrayForDataTable");
             console.log(result.result);
 
-
-          console.log(result.result);
           var arrayForDataTable = Util.apiToArray(result.result,
           [ 'date',
             'FDCENCONSENT_1',
@@ -174,23 +161,24 @@ function drawStacked() {
             'Enrollment Consented',
             'Live births']
             );
+          console.log(config.apiUrl+"FormUnitDataCount -- after arrayForDataTable");
           console.log(arrayForDataTable);
 
           var data = google.visualization.arrayToDataTable(arrayForDataTable);
 
 
-        // Create the data table.
-        // var data = google.visualization.arrayToDataTable([
-        //   [ 'Time period',
-        //   'Surveillance Consented',
-        //   'Eligible MWRAs',
-        //   'Pregnancies Identified',
-        //   'Enrollment Consented',
-        //   'Live births'],
-        //   [ "Jan 2016", 1000, 240, 20, 10 ,3],
-        //   [ "Feb 2016", 600,  190, 29, 190,5],
-        //   ["Mar 2016", 160, 22,  23, 22 ,3]
-        // ]);
+       // Create the data table.
+        var data = google.visualization.arrayToDataTable([
+          [ 'Time period',
+          'Surveillance Consented',
+          'Eligible MWRAs',
+          'Pregnancies Identified',
+          'Enrollment Consented',
+          'Live births'],
+          [ "Jan 2016", 1000, 240, 20, 10 ,3],
+          [ "Feb 2016", 600,  190, 29, 190,5],
+          ["Mar 2016", 160, 22,  23, 22 ,3]
+        ]);
 
 
       var options = {
