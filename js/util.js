@@ -119,6 +119,11 @@ Util = {
 
 
  			return resultArray;
-	}
+	},
+	logout: function(){
+		console.log("logout");
+		sessionStorage.removeItem('authorization');
+		location.reload();
+		}
 
 }

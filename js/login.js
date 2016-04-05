@@ -21,6 +21,11 @@ var login = function(evt,values){
 		    success: function (){
 		    	sessionStorage.setItem("authorization", make_base_auth(username, password));
 		    	location.reload();
+		    },
+		    error: function(XMLHttpRequest, textStatus, errorThrown) { 
+		    	console.log("can't login");
+		    	console.log(arguments);
+    			alert("Unable to verify your login credentials. Status: " + textStatus);
 		    }
 		});
 }

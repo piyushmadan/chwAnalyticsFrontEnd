@@ -6,7 +6,7 @@
 $(document).ready(function () {
 
 
-
+	$("#navbar ul").hide();
 
 	if(sessionStorage.getItem("authorization")){
 		$.ajax({
@@ -18,6 +18,7 @@ $(document).ready(function () {
 			        xhr.setRequestHeader("Content-Type","application/json")
 			    },
 			    success: function (){
+			    	$("#navbar ul").show();
 			    //	sessionStorage.setItem("authorization", make_base_auth(username, password));
 			    //	location.reload();
 				//	Util.showHtmlElement([{id:"dashboard_graphs",html:"html/dashboard.html"}]);		
