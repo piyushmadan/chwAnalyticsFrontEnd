@@ -147,8 +147,11 @@ function drawStacked() {
             console.log(config.apiUrl+"FormUnitDataCount -- before arrayForDataTable");
             console.log(result.result);
 
-          var arrayForDataTable = Util.apiToArray(result.result,
-          [ 'date',
+          var arrayForDataTable = Util.consolidateApiToArray(result.result,
+            'DATE',
+            'titleVar_Value',
+            'count',
+          [ 'DATE',
             'FDCENCONSENT_1',
             'FDELIGIBLE_1',
             'FDBNFSTS_0',
@@ -167,18 +170,18 @@ function drawStacked() {
           var data = google.visualization.arrayToDataTable(arrayForDataTable);
 
 
-       // Create the data table.
-        var data = google.visualization.arrayToDataTable([
-          [ 'Time period',
-          'Surveillance Consented',
-          'Eligible MWRAs',
-          'Pregnancies Identified',
-          'Enrollment Consented',
-          'Live births'],
-          [ "Jan 2016", 1000, 240, 20, 10 ,3],
-          [ "Feb 2016", 600,  190, 29, 190,5],
-          ["Mar 2016", 160, 22,  23, 22 ,3]
-        ]);
+       // // Create the data table.
+       //  var data = google.visualization.arrayToDataTable([
+       //    [ 'Time period',
+       //    'Surveillance Consented',
+       //    'Eligible MWRAs',
+       //    'Pregnancies Identified',
+       //    'Enrollment Consented',
+       //    'Live births'],
+       //    [ "Jan 2016", 1000, 240, 20, 10 ,3],
+       //    [ "Feb 2016", 600,  190, 29, 190,5],
+       //    ["Mar 2016", 160, 22,  23, 22 ,3]
+       //  ]);
 
 
       var options = {
@@ -251,8 +254,8 @@ function drawStacked() {
         };
 
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-
-        chart.draw(data, options);
+     //   Hidden till I figure out provided mappings
+     //   chart.draw(data, options);
       }
 
 
