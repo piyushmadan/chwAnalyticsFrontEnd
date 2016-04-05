@@ -53,26 +53,26 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse ">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">FWA</a></li>
             <li id="FDnav"><a  href="#dashboard_graph"
             onclick="Util.showHtmlElement([{id:'dashboard_graphs',html:'html/dashboard.html'}]);"
               >FD</a></li>
-            <li><a href="#">Overview</a></li>
-            <li><a href="#formStatusReportDateRange" onclick="Util.showHtmlElement([{id:'reporting_1',html:'html/reporting_1.html'}]);">Reporting</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#Page1"
-            onclick="Util.showHtmlElement([{id:'reporting_comparision_health_worker',html:'html/reporting_comparision_health_worker.html'}]);"
-        >Ranks <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Page 1-1</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li> 
-        </ul>
-      </li>
+            <li><a onclick="alert('coming soon');" href="#">FWA</a></li>
+<!--             <li><a href="#">Overview</a></li>
+ -->            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reports <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#formStatusReportDateRange" onclick="Util.showHtmlElement([{id:'reporting_1',html:'html/reporting_1.html'}]);">Form completion Report</a></li>
+                  <li><a  onclick="Util.showHtmlElement([{id:'reporting_comparision_health_worker',html:'html/reporting_comparision_health_worker.html'}]);" href="#">FD Ranks</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">More reports will be added here</a></li>
 
-
+                  <li><a href="#">-</a></li>
+                  <li><a href="#">-</a></li>
+                </ul>
+              </li>
             <li>
-                <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Alert</button>
+                <button type="button" class="btn btn-danger" style="margin:20%" onclick="alert('amazing stuff coming soon');" >Alert</button>
             </li>
             <li><a onclick="Util.logout();" href="#">Logout</a></li>
           </ul>

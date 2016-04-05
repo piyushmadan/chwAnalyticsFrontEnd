@@ -19,6 +19,7 @@ $(document).ready(function () {
 			    },
 			    success: function (){
 			    	$("#navbar ul").show();
+			    	$(".dropdown-menu").hide();
 			    //	sessionStorage.setItem("authorization", make_base_auth(username, password));
 			    //	location.reload();
 				//	Util.showHtmlElement([{id:"dashboard_graphs",html:"html/dashboard.html"}]);		
@@ -39,6 +40,13 @@ $(document).ready(function () {
 	$("#dashboard_graphs").load("html/dashboard.html");
 
 //	$('.dropdown-toggle').dropdown();
+
+    $('.navbar .dropdown').hover(function() {
+        $(this).find('.dropdown-menu').first().stop(true, true).delay(250).slideDown();
+    }, function() {
+        $(this).find('.dropdown-menu').first().stop(true, true).delay(100).slideUp()
+    });
+
 
 		$("#FDnav").on("click", function(e) {
 
