@@ -214,7 +214,7 @@
                 xhr.setRequestHeader("Content-Type","application/json")
             },
             success: function (response){
-                $("#formStatusReportDiv").show();
+                $("#CHWRankReportDiv").show();
                 $('#tableFormStatusReport').bootstrapTable('load', response.result);
 
             }
@@ -296,8 +296,15 @@
     // Setting CHWScoringIndicatorStatistics for Cell Styling (using avg and sd)
     if(!localStorage.getItem("CHWScoringIndicatorStatistics")){
         console.log("will check localStorage");
-        $.ajax( config.apiUrl + "CHWScoringIndicatorStatistics" )
-         .done(function(result, msg) {
+        $.ajax({type: "GET",
+                url: config.apiUrl + "CHWScoringIndicatorStatistics",
+                dataType: 'json',
+                async : false,
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("authorization", sessionStorage.getItem("authorization"));
+                    xhr.setRequestHeader("Content-Type","application/json")
+                }
+         }).done(function(result, msg) {
             localStorage.setItem('CHWScoringIndicatorStatistics', JSON.stringify(result));
             console.log(arguments);
           });
