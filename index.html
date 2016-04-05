@@ -54,14 +54,15 @@
         <div id="navbar" class="navbar-collapse collapse ">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">FWA</a></li>
-            <li id="FDnav"><a  href="#dashboard_graph">FD</a></li>
+            <li id="FDnav"><a  href="#dashboard_graph"
+            onclick="Util.showHtmlElement([{id:'dashboard_graphs',html:'html/dashboard.html'}]);"
+              >FD</a></li>
             <li><a href="#">Overview</a></li>
             <li><a href="#formStatusReportDateRange" onclick="Util.showHtmlElement([{id:'reporting_1',html:'html/reporting_1.html'}]);">Reporting</a></li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#Page1"
-onclick="$('#reporting_comparision_health_worker').load('html/reporting_comparision_health_worker.html'); $('#dashboard_graphs , #reporting_1').hide();"
-
-        >Page 1 <span class="caret"></span></a>
+            onclick="Util.showHtmlElement([{id:'reporting_comparision_health_worker',html:'html/reporting_comparision_health_worker.html'}]);"
+        >Ranks <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#">Page 1-1</a></li>
           <li><a href="#">Page 1-2</a></li>
