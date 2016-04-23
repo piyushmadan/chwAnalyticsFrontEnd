@@ -68,33 +68,48 @@
                 <th data-visible="true" data-field="tlPinId" data-sortable="true">TLPIN</th>
                 <th data-visible="true" data-field="sectorId" data-sortable="true">Sector Id</th>
                 <th data-visible="true" data-field="name" data-sortable="true">Name</th>
-                <th data-visible="true" data-field="scheduleUser_id" data-sortable="true">UserId</th>
-                <th data-visible="true" data-field="total_commulative_rank"  data-sorter="resultTable.sortConsideringNull" data-sortable="true">total_ <br> commulative <br> _rank sum </th>
-                <th data-visible="true" data-field="cummulate_score_1"  data-sorter="resultTable.sortConsideringNull" data-sortable="true">cummulate <br> _score_1</th>
-                <th data-visible="true" data-field="cummulate_score_2"  data-sorter="resultTable.sortConsideringNull" data-sortable="true">cummulate<br> _score_2</th>
-                <th data-visible="true" data-field="sum_rank_3"  data-sorter="resultTable.sortConsideringNull" data-sortable="true">cummulate<br>_score_3</th>
+<!--                 <th data-visible="true" data-field="scheduleUser_id" data-sortable="true">UserId</th>
+ -->                <th data-visible="true" data-field="total_commulative_rank"  data-sorter="resultTable.sortConsideringNull" data-sortable="true"><br> commulative <br> rank sum </th>
+                <th data-visible="true" data-field="cummulate_score_1"  data-sorter="resultTable.sortConsideringNull" data-sortable="true">cummulate <br>score <br> Form <br> name</th>
+                <th data-visible="true" data-field="cummulate_score_2"  data-sorter="resultTable.sortConsideringNull" data-sortable="true">cummulate<br> score <br> Form <br>completion <br> time</th>
+                <th data-visible="true" data-field="sum_rank_3"  data-sorter="resultTable.sortConsideringNull" data-sortable="true">cummulate<br> score <br>form <br> upload <br> time</th>
 
-                <th data-field="rank_percentage_one" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_1</th>
-                <th data-field="rank_percentage_six" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_6</th>
-                <th data-field="rank_percentage_tnine" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_29</th>
-                <th data-field="rank_percentage_thirty" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_30</th>
-                <th data-field="rank_percentage_thrity1" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_31</th>
-                <th data-field="rank_percentage_thrity2" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_32</th>
-                <th data-field="rank_percentage_anc" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_ANC</th>
-                <th data-field="rank_percentage_vs29" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_VS29</th>
-                <th data-field="rank_percentage_vs43" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">1_VS43</th>
+                <!-- 1_1 -->
+                <th data-field="rank_percentage_one" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">Complete % <br> NWRM </th> 
+                <!-- 1_6 -->
+                <th data-field="rank_percentage_six" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">Complete % <br> FDGIS </th>
+                <!-- 1_29 --> 
+                <th data-field="rank_percentage_tnine" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">Complete % <br> ANCF4</th>
+                <!-- 1_30 -->
+                <th data-field="rank_percentage_thirty" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">Complete % <br> PNCF</th>
+                <!-- 1_31 -->
+                <th data-field="rank_percentage_thrity1" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">Complete % <br> VS29a</th>
+                <!-- 1_32 -->
+                <th data-field="rank_percentage_thrity2" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">Complete % <br> VS43a</th>
+                <!-- 1_ANC -->
+                <th data-field="rank_percentage_anc" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">Complete % <br> ANC</th>
+                <!-- 1_VS29 -->
+                <th data-field="rank_percentage_vs29" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">Complete % <br> VS29</th>
+                <!-- 1_VS43 -->
+                <th data-field="rank_percentage_vs43" data-sortable="true" data-sorter="resultTable.rankPercSorter"  data-cell-style="resultTable.cellStyle"  width="200">Complete % <br> VS43</th>
 
 <!--                 <th data-field="sender_id" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">sender_id</th>
  -->
-                <th data-field="rank_value_2_census" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">2_census</th>
-                <th data-field="rank_value_2_psrf" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">2_psrf</th>
-                <th data-field="rank_value_2_pvf" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">2_pvf</th>
-                <th data-field="rank_value_2_rest" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200"> 2_rest</th>
-                <th data-field="sum_rank_2" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200"> sum_rank_2</th>
+                <!-- 2_census    -->
+                <th data-field="rank_value_2_census" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">Form <br>completion <br> time <br> census</th>
+                <!-- 2_psrf -->
+                <th data-field="rank_value_2_psrf" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">Form <br>completion <br> time <br> PSRF</th>
+                <!-- 2_pvf -->
+                <th data-field="rank_value_2_pvf" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">Form <br>completion <br> time <br> PVF</th>
+                <!-- 2_rest -->
+                <th data-field="rank_value_2_rest" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200"> Form <br>completion <br> time <br> rest</th>
+                <!-- sum_rank_2 -->
+                <th data-field="sum_rank_2" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">Form <br>completion <br> time <br> RANK </th>
 
 
                 <th data-field="avgEndToReceiveTime" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200">avg <br> form end <br> To server <br> receive Time</th>
-                <th data-field="sum_rank_3" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200"> sum_rank_3</th>
+                <!-- sum_rank_3 -->
+                <th data-field="sum_rank_3" data-sortable="true" data-sorter="resultTable.sortConsideringNull"  data-cell-style="resultTable.cellStyle"  width="200"> Form <br> upload time <br> RANK</th>
 
 <!--                 <th data-field="rank_one" data-sortable="true">Rank_one </th>
                 <th data-field="percentage_one" data-sortable="true" width="200">Active</th>

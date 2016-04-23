@@ -37,20 +37,20 @@
 
   <label for="formStatusReportGroupBy">Group by:</label>
   <select class="form-control" id="formStatusReportGroupBy">
-    <option>sector_id</option>
-    <option>role_id</option>
-    <option>jweek_id</option>
-    <option>scheduleUser_id</option>
-    <option>formToGenerate_id</option>
+    <option value="sector_id">Sector</option>
+    <option value="role_id">Worker Role</option>
+    <option value="jweek_id">JWeek</option>
+    <option value="scheduleUser_id">User</option>
+    <option value="formToGenerate_id">Form Type</option>
   </select>
 
 <br>
   <label for="formStatusReportGroupBy">Filter Forms:</label>
 <br>
 <select class="selectpicker" multiple>
-  <option>Mustard</option>
-  <option>Ketchup</option>
-  <option>Relish</option>
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
 </select>
 
 <br>
@@ -66,7 +66,6 @@
     <br>
     <table id="tableFormStatusReport" 
     class="table table-striped"
-    data-url="http://localhost:3000/formStatusReport"
     data-query-params="resultTable.dataFromUrl"
     data-method="get"
     data-content-type="application/json"
@@ -75,7 +74,9 @@
     data-search="true" 
     data-show-columns="true" 
     >
-    <!-- data-pagination="true" 
+    <!-- 
+    data-url="http://localhost:3000/formStatusReport"
+    data-pagination="true" 
   data-page-list="[10, 25, 50, 100, 500, All]"
     -->
         <thead>
