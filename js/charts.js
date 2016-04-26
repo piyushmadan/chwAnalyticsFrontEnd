@@ -169,27 +169,131 @@ function drawStacked() {
 
       function drawBarChart2() {
 
+        if( $("#DashboardWeeklystart").val() && $("#DashboardWeeklyend").val()){
+          var dateString = "?startDate=" + (new Date($("#DashboardWeeklystart").val()).toISOString().substring(0, 10));
+          dateString += "&endDate="+ (new Date($("#DashboardWeeklyend").val()).toISOString().substring(0, 10));
+        } else {
+          var dateString = "";
+        }
+
+
+          $.ajax({
+            url: config.apiUrl+"WeeklyReportData"+dateString,
+            context: document.body,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("authorization", sessionStorage.getItem("authorization"));
+                xhr.setRequestHeader("Content-Type","application/json")
+            }
+          }).done(function(result) {            
+
+          var weeklyData = new Object();
+          for(var i=0; i <= result.result.length; i++){
+            if(result.result[i]){
+              if((result.result[i]["titleVar"] in weeklyData) && result.result[i]["count"]){
+                  weeklyData[result.result[i]["titleVar"]]+=result.result[i]["count"];
+              } else if(result.result[i]["titleVar"] && result.result[i]["count"]){
+                   weeklyData[result.result[i]["titleVar"]]=result.result[i]["count"];          
+                }
+            }
+          }
+        //Definition here: 
+        // https://docs.google.com/document/d/1vIIMDohNfs4Jf5o_r8svLCLTCziH8yWoDtjIYBb3s_A/edit
+
+        //TODO: update api to be get Pending # for following weekly stat chart
+        
         // Create the data table.
         var data = google.visualization.arrayToDataTable([
           [ '',
-            'Met (FDCENSTAT = 1)',
-            'Not Met (FDCENSTAT=2)',
-            'Refusal (Visit Status) (FDCENSTAT=6)',
-            'Permanent Move (FDCENSTAT=7)',
-            'Woman Died (FDCENSTAT=8)',
-            'DMC (FDCENSTAT=999)',
-            'Pending (Scheduled - COUNT(CENSUS Submissions))',
-            'Consented (FDCENCONSENT = 1)',
-            'Refused (FDCENCONSENT = 6)'
+            'Met', 'Not Met', 'Refusal (Visit Status) ',
+            'Permanent Move', 'Woman Died', 'Husband Died' , 
+            'DMC', 'Pending', 'Consented ', 
+            'Refused ' , 'Divorced / Separated', 'Pregnancies Identified',
+            'Live births', 'Miscarriage / Stillbirth',  'Woman Died before Birth',
+            'Child Deaths',  'Menopausal or Wom / Hus Sterilized' , 'False Pregnancy Report' , 
+            'Met & Pregnant', 'Completed'
+ 
           ],
-          [ "Census", 1000, 240, 20, 10 ,3,1000, 240, 20, 0 ],
-          [ "PSRF", 600,  190, 29, 190,5,240, 20, 10 ,3],
-          [ "SES", 160, 22,  23, 22 ,3, 600,  190, 29, 190],
-          [ "PVF", 160, 22,  23, 22 ,3, 22,  23, 22 ,3],
-          [ "ANC 1-4", 160, 22,  23, 22 ,3, 29, 190,5,240],
-          [ "VS29", 160, 22,  23, 22 ,3, 190,5,240, 20],
-          [ "VS43", 160, 22,  23, 22 ,3, 22 ,3, 22,  23],
+          [ "Census", weeklyData["FDCENSTAT_1"] || 0 ,  weeklyData["FDCENSTAT_2"] || 0,  weeklyData["FDCENSTAT_6"] || 0, 
+                      weeklyData["FDCENSTAT_7"] || 0 , weeklyData["FDCENSTAT_8"] || 0, 0, 
+                      weeklyData["FDCENSTAT_999"] || 0,  0 , weeklyData["FDCENCONSENT_1"] || 0,  //TODO: Add Pending (Scheduled - COUNT(CENSUS Submissions))
+                      weeklyData["FDCENCONSENT_6"] || 0 , 0 , 0,
+                      0,0,0,
+                      0,0,0,
+                      0,0
+                      ],
+          [ "PSRF", weeklyData["FDPSRSTS_1"] || 0 ,  weeklyData["FDPSRSTS_2"] || 0,  weeklyData["FDPSRSTS_6"] || 0, 
+                      weeklyData["FDPSRSTS_7"] || 0 , weeklyData["FDPSRSTS_8"] || 0, weeklyData["FDPSRSTS_88"] || 0, 
+                      weeklyData["FDPSRSTS_999"] || 0 , 0, weeklyData["FDPSRCONSENT_1"] || 0,    //TODO: Pending (Scheduled - COUNT(PSRF Submissions))
+                      weeklyData["FDPSRSTS_6"] || 0 ,  weeklyData["FDPSRSTS_5"] || 0 , weeklyData["FDPSRPREGSTS_1"] || 0,
+                      0,0,0,
+                      0,( weeklyData["FDPSRSTS_3"] || 0)+(weeklyData["FDPSRSTS_4"] || 0)+(weeklyData["FDPSRSTS_5"] || 0),0,
+                      0,0
+                      ],
+          [ "SES",  100, 202,  203,  // This is Demo data
+                    220 , 30, 600,  
+                    100, 290, 400,
+                    0,0,0,
+                    0,0,0,
+                    0,0,0,
+                    0,0
+                    ],
+          [ "PVF", 0, weeklyData["FDBNFSTS_1"] || 0,  weeklyData["FDBNFSTS_6"] || 0, 
+                    weeklyData["FDBNFSTS_7"] || 0 , weeklyData["FDBNFWOMVITSTS_0"] || 0, 0,   
+                    0, 0,0, //TODO: Add Pending (Scheduled - COUNT (PVF Submissions))
+                    0, 0,0, 
+                    0, weeklyData["FDBNFSTS_4"] || 0 ,0,   //TODO: Add Live Births (Sum of FDBNFLB)
+                    weeklyData["FDBNFCHLDVITSTS_0"] || 0,0,weeklyData["FDBNFSTS_0"] || 0,     
+                    weeklyData["FDBNFSTS_1"] || 0,0
+                    ],
+          [ "ANC 1-4", 0, weeklyData["TLANCxREMSTS_2"] || 0,  23, 
+                      0 , weeklyData["TLANCxREMSTS_8"] || 0, 0, 
+                      weeklyData["TLANCxREMSTS_999"] || 0,0,0, //TODO: Add Pending (Scheduled - COUNT (PVF Submissions))
+                      weeklyData["TLANCxREMSTS_6"] || 0,0,0,         
+                      weeklyData["TLANCxREMSTS_3"] || 0,weeklyData["TLANCxREMSTS_4"] || 0,0,
+                      0,0,0,
+                      weeklyData["TLANCxREMSTS_1"] || 0,0
+                      ],
+          [ "VS29", 0, 0 ,  0 ,  //This is demo data
+                    0 , 0, 0, 
+                    0,150,0,
+                    0,0,0,
+                    0,0,0,
+                    0,0,0,
+                    0,200
+                    ],
+          [ "VS43", 0, 0, 0, //This is demo data
+                    0 ,0, 0 ,
+                    0, 220,0,
+                    0,0,0,
+                    0,0,0,
+                    0,0,0,
+                    0,130
+                    ]
+
         ]);
+
+
+        //For demo
+        // var data = google.visualization.arrayToDataTable([
+        //   [ '',
+        //     'Met (FDCENSTAT = 1)',
+        //     'Not Met (FDCENSTAT=2)',
+        //     'Refusal (Visit Status) (FDCENSTAT=6)',
+        //     'Permanent Move (FDCENSTAT=7)',
+        //     'Woman Died (FDCENSTAT=8)',
+        //     'DMC (FDCENSTAT=999)',
+        //     'Pending (Scheduled - COUNT(CENSUS Submissions))',
+        //     'Consented (FDCENCONSENT = 1)',
+        //     'Refused (FDCENCONSENT = 6)'
+        //   ],
+        //   [ "Census", 1000, 240, 20, 10 ,3,1000, 240, 20, 0 ],
+        //   [ "PSRF", 600,  190, 29, 190,5,240, 20, 10 ,3],
+        //   [ "SES", 160, 22,  23, 22 ,3, 600,  190, 29, 190],
+        //   [ "PVF", 160, 22,  23, 22 ,3, 22,  23, 22 ,3],
+        //   [ "ANC 1-4", 160, 22,  23, 22 ,3, 29, 190,5,240],
+        //   [ "VS29", 160, 22,  23, 22 ,3, 190,5,240, 20],
+        //   [ "VS43", 160, 22,  23, 22 ,3, 22 ,3, 22,  23],
+        // ]);
 
 
       var options = {
@@ -198,6 +302,7 @@ function drawStacked() {
           var chart =  new google.charts.Bar(document.getElementById('chart_div5'));
   
             chart.draw(data, options);
+          });
       }
 
 

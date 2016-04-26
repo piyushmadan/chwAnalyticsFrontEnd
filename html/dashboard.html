@@ -86,15 +86,16 @@
           <div> 
 
                 <div class="input-daterange" id="datepicker form-control" >
-                    <input type="text" class="input-small" name="start" value="01/26/2016"/>  to
+                    <input type="text" class="input-small" id="DashboardWeeklystart" value="04/20/2016"/>  to
                     <!-- <span class="add-on" style="vertical-align: top;height:20px ; hidden:true">to</span> -->
-                    <input type="text" class="input-small" name="end" value="02/02/2016" />
+                    <input type="text" class="input-small" id="DashboardWeeklyend" value="05/10/2016" />
+                    <button onclick="drawBarChart2();">Update</button>
                 </div>
           </div>
                 <div id="chart_div5" class="gchart col-md-12"></div>
 
           <div> 
-                          <h2 class="sub-header">Map</h2>
+                          <h2 class="sub-header" hidden>Map</h2>
 
                 <div id="regions_div" style="gchart col-md-12"></div>
 
