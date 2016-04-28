@@ -229,9 +229,9 @@ function drawStacked() {
                       0,( weeklyData["FDPSRSTS_3"] || 0)+(weeklyData["FDPSRSTS_4"] || 0)+(weeklyData["FDPSRSTS_5"] || 0),0,
                       0,0
                       ],
-          [ "SES",  100, 202,  203,  // This is Demo data
-                    220 , 30, 600,  
-                    100, 290, 400,
+          [ "SES",  0, 0,  0,  // This is Demo data
+                    0 , 0, 0,  
+                    0, 0,  0,
                     0,0,0,
                     0,0,0,
                     0,0,0,
@@ -255,7 +255,7 @@ function drawStacked() {
                       ],
           [ "VS29", 0, 0 ,  0 ,  //This is demo data
                     0 , 0, 0, 
-                    0,150,0,
+                    0,0,0,
                     0,0,0,
                     0,0,0,
                     0,0,0,
@@ -263,7 +263,7 @@ function drawStacked() {
                     ],
           [ "VS43", 0, 0, 0, //This is demo data
                     0 ,0, 0 ,
-                    0, 220,0,
+                    0, 0,0,
                     0,0,0,
                     0,0,0,
                     0,0,0,
