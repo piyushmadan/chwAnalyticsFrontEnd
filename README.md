@@ -11,4 +11,6 @@ Installation
 
 - Change the back-end and couchDB url in `js/config.js`
 
+- Views needed in couchdb are in `js/viewsForCouchDB.js`
+
 - symbolic link it to apache html folder 
