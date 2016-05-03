@@ -52,6 +52,12 @@
 //     }
 // });
 
+$.ajax({
+  url: config.couchDBUrl + "/_utils/script/jquery.couch.js",
+  dataType: "script",
+//  success: success
+});
+
 
 alertTable = {
         ajaxDataFromUrl:  function(){

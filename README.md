@@ -9,6 +9,6 @@ Installation
  git clone https://github.com/piyushmadan/chwAnalyticsFrontEnd 
 ``` 
 
-- Change the back-end url in `js/config.js`
+- Change the back-end and couchDB url in `js/config.js`
 
 - symbolic link it to apache html folder 
