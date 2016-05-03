@@ -42,22 +42,20 @@
 
 </form>
 
- <div id="jstree_demo_div"> </div>
+<!--  <div id="jstree_demo_div"> </div>
 <div id="tree1"></div>
 <div id="tree2"></div>
-
+ -->
 <div style="padding: 10px; height:100px " id="formAlertDiv" hidden>
+    <div id="toolbar">
+        <button id="exportTable" style="align:left" onclick=" $('#tableformAlert').tableExport({fileName:'alert'+ '-' + $('#formAlertType').val(),type:'csv'});" class="btn btn-default">Click to Export</button>
+    </div>
     <br>
+
     <table id="tableformAlert" 
     class="table table-striped"
-     data-toggle="table"
-    data-content-type="application/json"
-    data-advanced-search="true"
-    data-id-table="advancedTable"
-    data-search="true" 
-    data-show-columns="true" 
-    data-filter-control="true"
-    >
+               data-toggle="table"
+   >
         <thead>
             <tr>
                 <th data-field="key.1.doc.type" data-sortable="true"> Case type </th>

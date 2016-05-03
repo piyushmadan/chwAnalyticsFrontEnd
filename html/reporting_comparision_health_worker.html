@@ -45,16 +45,16 @@
 
 <div style="padding: 10px; height:100px " id="CHWRankReportDiv"  >
     <br>
+     <div id="toolbar">
+        <button onclick=" $('#tableFormStatusReport').tableExport({fileName:'healthworker-comparision',type:'csv'});" class="btn btn-default">Click to Export</button>
+    </div> 
+
     <table  
     id="tableFormStatusReport" 
     class="table table-striped"    
     data-query-params="resultTable.dataFromUrl"
     data-response-handler="resultTable.responseHandler"
     data-cell-style="resultTable.cellStyle"
-    data-search="false" 
-    data-show-columns="true"
-    data-show-export="true"
-    data-export-types="['excel', 'json', 'xml']"
     data-page-list="[10, 25, 50, 100, ALL]"
     data-minimum-count-columns="5"
     >

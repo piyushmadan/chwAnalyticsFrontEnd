@@ -56,19 +56,19 @@
             <li id="FDnav"><a  href="#dashboard_graph"
             onclick="Util.showHtmlElement([{id:'dashboard_graphs',html:'html/dashboard.html'}]);"
               >FD</a></li>
-            <li><a onclick="alert('coming soon');" href="#">FWA</a></li>
+            <!-- <li><a onclick="alert('coming soon');" href="#">FWA</a></li> -->
 <!--             <li><a href="#">Overview</a></li>
  -->            <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reports <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="#formStatusReportDateRange" onclick="Util.showHtmlElement([{id:'reporting_1',html:'html/reporting_1.html'}]);">Form completion Report</a></li>
                   <li><a  onclick="Util.showHtmlElement([{id:'reporting_comparision_health_worker',html:'html/reporting_comparision_health_worker.html'}]);" href="#">FD Ranks</a></li>
-                  <li role="separator" class="divider"></li>
+<!--                   <li role="separator" class="divider"></li>
                   <li class="dropdown-header">Nav header</li>
                   <li><a href="#">More reports will be added here</a></li>
 
                   <li><a href="#">-</a></li>
-                  <li><a href="#">-</a></li>
+                  <li><a href="#">-</a></li> -->
                 </ul>
               </li>
               <li id="alertNavBar"><a  href="#alert"
@@ -128,10 +128,29 @@
 <!--    <script src="js/table.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.1/js/bootstrap-datepicker.min.js"></script>
 
+    <!-- Export table information -->
+    <!-- http://issues.wenzhixin.net.cn/bootstrap-table/#extensions/export.html -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/export/bootstrap-table-export.js"></script>
+
+     <!-- bootstrap-table-export needs https://github.com/hhurz/tableExport.jquery.plugin -->
+    <script src="//rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js"></script>
+
+    <script type="text/javascript" src="//rawgit.com/hhurz/tableExport.jquery.plugin/master/libs/jsPDF/jspdf.min.js"></script>
+    <script type="text/javascript" src="//rawgit.com/hhurz/tableExport.jquery.plugin/master/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+
+    <!-- To export the table as a PDF file the following includes are required: -->
+    <script type="text/javascript" src="//rawgit.com/hhurz/tableExport.jquery.plugin/master/libs/jsPDF/jspdf.min.js"></script>
+    <script type="text/javascript" src="//rawgit.com/hhurz/tableExport.jquery.plugin/master/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+
+    <!-- To export the table in PNG format you need to include: -->
+    <script type="text/javascript" src="//rawgit.com/hhurz/tableExport.jquery.plugin/master/libs/html2canvas/html2canvas.min.js"></script>
+
+    <!-- To generate the export file in the desired format finally include: -->
+    <script type="text/javascript" src="//rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.min.js"></script>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/flat-json/bootstrap-table-flat-json.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/toolbar/bootstrap-table-toolbar.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/filter-control/bootstrap-table-filter-control.js"></script>
 
     <script src="https://rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js"></script>

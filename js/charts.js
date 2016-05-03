@@ -9,10 +9,10 @@
       // google.setOnLoadCallback(drawChart);
       google.setOnLoadCallback(drawAreaChart);
 
-      google.setOnLoadCallback(drawStacked);
+  //    google.setOnLoadCallback(drawStacked);
       google.setOnLoadCallback(drawBarChart);
       google.setOnLoadCallback(drawBarChart2);
-      google.setOnLoadCallback(drawRegionsMap);
+   //   google.setOnLoadCallback(drawRegionsMap);
 
 
       setTimeout(function(){
@@ -30,22 +30,29 @@
 
      setTimeout(function(){
         drawBarChart2();
-        drawRegionsMap();
+   //     drawRegionsMap();
 
       },4000
         )
 
-      setTimeout(function(){
-        drawStacked();
+      // setTimeout(function(){
+      //   drawStacked();
 
-      },3000
-        )
+      // },3000
+      //   )
 
 
       function drawAreaChart() {
 
+        if( $("#KeyIndicatorstart").val() && $("#KeyIndicatorend").val()){
+          var dateString = "?startDate=" + (new Date($("#KeyIndicatorstart").val()).toISOString().substring(0, 10));
+          dateString += "&endDate="+ (new Date($("#KeyIndicatorend").val()).toISOString().substring(0, 10));
+        } else {
+          var dateString = "";
+        }
+        
           $.ajax({
-            url: config.apiUrl+"FormStatusCount",
+            url: config.apiUrl+"FormStatusCount"+dateString,
             beforeSend: function(xhr) {
                 xhr.setRequestHeader("authorization", sessionStorage.getItem("authorization"));
                 xhr.setRequestHeader("Content-Type","application/json")
@@ -83,31 +90,40 @@
 
       }
 
-function drawStacked() {
-        var data = google.visualization.arrayToDataTable([
-          ['Type of Form', 'Completed', 'Not Completed', 'Person not found'],//, { role: 'annotation' }],
-          ['ANC Visit', 1000, 240, 20  ],
-          ['High risk women', 600, 190, 29],
-          ['Registration', 160, 22, 23 ]
-        ]);
-      var options = {
-        legend: {position: "top"},
-   //     bar: { groupWidth: '75%' },
-        isStacked: 'percent',
-        bars: 'horizontal'
-      };
+// Example to draw Stacked -- changed in iteration 1
+// function drawStacked() {
+//         var data = google.visualization.arrayToDataTable([
+//           ['Type of Form', 'Completed', 'Not Completed', 'Person not found'],//, { role: 'annotation' }],
+//           ['ANC Visit', 1000, 240, 20  ],
+//           ['High risk women', 600, 190, 29],
+//           ['Registration', 160, 22, 23 ]
+//         ]);
+//       var options = {
+//         legend: {position: "top"},
+//    //     bar: { groupWidth: '75%' },
+//         isStacked: 'percent',
+//         bars: 'horizontal'
+//       };
 
 
-      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
-      chart.draw(data, options);
-    }
+//       var chart = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
+//       chart.draw(data, options);
+//     }
 
 
 
       function drawBarChart() {
 
+
+        if( $("#MoreIndicatorstart").val() && $("#MoreIndicatorEnd").val()){
+          var dateString = "?startDate=" + (new Date($("#MoreIndicatorstart").val()).toISOString().substring(0, 10));
+          dateString += "&endDate="+ (new Date($("#MoreIndicatorEnd").val()).toISOString().substring(0, 10));
+        } else {
+          var dateString = "";
+        }
+
           $.ajax({
-            url: config.apiUrl+"FormUnitDataCount",
+            url: config.apiUrl+"FormUnitDataCount"+dateString,
             context: document.body,
             beforeSend: function(xhr) {
                 xhr.setRequestHeader("authorization", sessionStorage.getItem("authorization"));
@@ -259,7 +275,7 @@ function drawStacked() {
                     0,0,0,
                     0,0,0,
                     0,0,0,
-                    0,200
+                    0,0
                     ],
           [ "VS43", 0, 0, 0, //This is demo data
                     0 ,0, 0 ,
@@ -267,7 +283,7 @@ function drawStacked() {
                     0,0,0,
                     0,0,0,
                     0,0,0,
-                    0,130
+                    0,0
                     ]
 
         ]);
@@ -336,7 +352,9 @@ function drawStacked() {
 
 
 
-
+  $('.input-small').datepicker({
+              format: 'mm/dd/yyyy'
+  });
 
 
 

@@ -140,6 +140,10 @@ $.couch.info({
                  //Due to bug in bootstrap library, following is used after first time
                 $('#tableformAlert').bootstrapTable('load', data.rows)
 
+                // $('#tableformAlert').bootstrapTable({
+                //     exportDataType: "all"
+                // });
+
 
 
                 // underscore ("_") is used to mention filter on value in the table

@@ -18,7 +18,7 @@
     </button>
 </div>
 
-<form class="form-group" id="formStatusReportOptions" onsubmit="resultTable.updateOptions()">
+<form class="form-group" id="formStatusReportOptions" >
 
   <label for="formStatusReportDateRange">Date Range:</label>
 
@@ -57,24 +57,29 @@
 <br>
 
 
-  <button type="submit" class="btn btn-default">Submit</button>
+<button onclick="resultTable.updateOptions()" class="btn btn-default">Submit</button>
 
 </form>
 
 
 <div style="padding: 10px; height:100px " id="formStatusReportDiv"  hidden>
+     <div id="toolbar">
+        <button onclick=" $('#tableFormStatusReport').tableExport({fileName:'reporting'+ '-' + $('#formStatusReportGroupBy').val(),type:'csv'});" class="btn btn-default">Click to Export</button>
+    </div> 
     <br>
     <table id="tableFormStatusReport" 
     class="table table-striped"
+    data-response-handler="resultTable.responseHandler"
+    data-row-style="resultTable.rowStyle"
+
+    >
+    <!-- 
     data-query-params="resultTable.dataFromUrl"
     data-method="get"
     data-content-type="application/json"
-    data-response-handler="resultTable.responseHandler"
-    data-row-style="resultTable.rowStyle"
     data-search="true" 
     data-show-columns="true" 
-    >
-    <!-- 
+
     data-url="http://localhost:3000/formStatusReport"
     data-pagination="true" 
   data-page-list="[10, 25, 50, 100, 500, All]"
