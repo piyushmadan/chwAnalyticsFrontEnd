@@ -43,6 +43,14 @@
         </div>
         <div class="col-sm-9 col-md-12 main">
           <h1 class="page-header">Key indicators for FD</h1>
+          <div> 
+
+                <div class="input-daterange" id="datepicker form-control" >
+                    <input type="text" class="input-small" id="KeyIndicatorstart" value="02/10/2016"/>  to
+                    <input type="text" class="input-small" id="KeyIndicatorend" value="08/10/2016" />
+                    <button onclick="drawAreaChart();">Update</button>
+                </div>
+          </div>
 
           <div class="row placeholders">
             <!-- <div class="col-xs-6 col-sm-3 placeholder"> -->
@@ -73,6 +81,14 @@
           </div> 
 
           <h2 class="sub-header">More indicators</h2>
+          <div> 
+
+                <div class="input-daterange" id="datepicker form-control" >
+                    <input type="text" class="input-small" id="MoreIndicatorstart" value="01/20/2016"/>  to
+                    <input type="text" class="input-small" id="MoreIndicatorEnd" value="05/10/2016" />
+                    <button onclick="drawBarChart();">Update</button>
+                </div>
+          </div>
 
           <div> 
                 <div hidden id="chart_div3" class="gchart col-md-6"></div>
