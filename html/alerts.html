@@ -1,0 +1,88 @@
+
+<!-- jquery.couch.js documentation:
+ http://daleharvey.github.io/jquery.couch.js-docs/symbols/%24.couch.db.html#.view -->
+<script src="http://127.0.0.1:5984/_utils/script/jquery.couch.js"></script>
+
+<script src="js/alerts.js"></script>
+
+
+<div class="form-inline" hidden>
+    <button type="button" 
+            class="btn btn-default mybtn-top">
+        Scroll to top
+    </button>
+    <button type="button" 
+            class="btn btn-default mybtn-row">
+        Scroll to row index: 
+    </button>
+        <input type="number" 
+               class="form-control row-index" 
+               value="3" min="0">
+    <button type="button" 
+            class="btn btn-default mybtn-btm">
+        Scroll to bottom
+    </button>
+</div>
+
+<form class="form-group" id="formAlert">
+
+
+<br>
+
+  <label for="formAlertType">Type of Alert:</label>
+  <select class="form-control" id="formAlertType">
+    <option value="findMissingWorkerVisit_1">Unmatched FD records</option>
+    <option value="findMissingWorkerVisit_2">Unmatched FWA records</option>
+    <option value="NidBidEmpty_1">Cases without NID and BID </option>
+    <option value="NidBidDuplicate_2">Duplicate cases (based on BID and NID) </option>
+
+  </select>
+
+  <button id="showAlertListButton" class="btn btn-default">Show list of alerts</button>
+
+</form>
+
+ <div id="jstree_demo_div"> </div>
+<div id="tree1"></div>
+<div id="tree2"></div>
+
+<div style="padding: 10px; height:100px " id="formAlertDiv" hidden>
+    <br>
+    <table id="tableformAlert" 
+    class="table table-striped"
+     data-toggle="table"
+    data-content-type="application/json"
+    data-advanced-search="true"
+    data-id-table="advancedTable"
+    data-search="true" 
+    data-show-columns="true" 
+    data-filter-control="true"
+    >
+        <thead>
+            <tr>
+                <th data-field="key.1.doc.type" data-sortable="true"> Case type </th>
+                <th data-field="key.1.doc.FWWOMNID" data-sortable="true"> Recorded NID</th>
+                <th data-field="key.1.doc.FWWOMBID" data-sortable="true"> Recorded BID </th>
+                <th data-field="key.1.doc.FWWOMGOBHHID" data-sortable="true"> FWA HHID </th>
+                <th data-field="key.1.doc.JiVitAHHID" data-sortable="true"> JiVitA HHID </th>
+<!--                 <th data-field="geoLocation" data-sortable="true"> FWWOMSUBUNIT <br> FWWOMUNION <br> FWWOMUPAZILLA <br> FWWOMWARD <br> Mauza Para</th>
+ -->
+                <th data-field="key.1.doc.FWWOMMAUZA_PARA" data-sortable="true"> FWWOMMAUZA_PARA </th>
+                <th data-field="key.1.doc.FWWOMWARD" data-sortable="true">FWWOMWARD </th>
+                <th data-field="key.1.doc.FWWOMUPAZILLA" data-sortable="true">FWWOMUPAZILLA </th>
+                <th data-field="key.1.doc.FWWOMUNION" data-sortable="true">FWWOMUNION </th>
+                <th data-field="key.1.doc.FWWOMSUBUNIT" data-sortable="true">FWWOMSUBUNIT </th>
+
+                <th data-field="key.1.doc.PROVIDERID" data-sortable="true" width="200"> Provider id</th>
+
+                <th data-field="key.1.doc.FWWOMFNAME" data-sortable="true" width="200"> Woman's First Name</th>
+                <th data-field="key.1.doc.FWHUSNAME" data-sortable="true" width="200"> Woman's Hushand Name</th>
+                <th data-field="key.1.doc.FWWOMAGE" data-sortable="true" width="200"> Woman's Age</th>
+
+                <th data-field="key.0" data-sortable="true"> Case Id </th>
+                <th data-filter-control="select" data-field="value" data-sortable="true">Alert type </th>
+                <th data-field="key.1.doc" data-cell-style="alertTable.cellStyle" data-sortable="true"> Data Tree  </th>
+            </tr>
+        </thead>
+    </table>
+</div>
