@@ -14,7 +14,7 @@
 
                     if(value.percentage>80){
                         return{
-                            css: {"background-color": "green !important"}
+                            css: {"background-color": "lightgreen !important"}
                         };                        
                     }
                     if(value.percentage>60){
@@ -24,7 +24,7 @@
                     }
 
                         return{
-                            css: {"background-color": "red !important"}
+                            css: {"background-color": "tomato !important"}
                         };                        
 
                 },

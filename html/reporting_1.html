@@ -29,10 +29,12 @@
   </div>
 <br>
 
+<div hidden>
   <label for="formStatusReportAggregator">Aggregate on:</label>
   <select class="form-control" id="formStatusReportAggregator">
     <option>STATUS</option>
   </select>
+</div>
 <br>
 
   <label for="formStatusReportGroupBy">Group by:</label>
@@ -71,7 +73,7 @@
     class="table table-striped"
     data-response-handler="resultTable.responseHandler"
     data-row-style="resultTable.rowStyle"
-
+    data-sort-name="percentage" data-sort-order="desc"
     >
     <!-- 
     data-query-params="resultTable.dataFromUrl"

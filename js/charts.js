@@ -261,7 +261,7 @@
                     weeklyData["FDBNFCHLDVITSTS_0"] || 0,0,weeklyData["FDBNFSTS_0"] || 0,     
                     weeklyData["FDBNFSTS_1"] || 0,0
                     ],
-          [ "ANC 1-4", 0, weeklyData["TLANCxREMSTS_2"] || 0,  23, 
+          [ "ANC 1-4", 0, weeklyData["TLANCxREMSTS_2"] || 0,  0, 
                       0 , weeklyData["TLANCxREMSTS_8"] || 0, 0, 
                       weeklyData["TLANCxREMSTS_999"] || 0,0,0, //TODO: Add Pending (Scheduled - COUNT (PVF Submissions))
                       weeklyData["TLANCxREMSTS_6"] || 0,0,0,         

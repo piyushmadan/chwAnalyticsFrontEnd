@@ -40,7 +40,7 @@
                     // RED IS MORE THAN 6 hours
                     if(value>360){
                         return{
-                            css: {"background-color": "red !important"}
+                            css: {"background-color": "tomato !important"}
                         };                        
                     }
                     // 60 to 360 mins in Yellow
@@ -52,7 +52,7 @@
                     // less than 60 mins in green
                     if(value>0){
                         return{
-                            css: {"background-color": "green !important"}
+                            css: {"background-color": "lightgreen !important"}
                         };                        
                     }
                 }
@@ -77,13 +77,13 @@
                         // Yellow within 1 std deviation
                         if(value_timeToComplete<= (mean + sd ) && value_timeToComplete >= (mean - sd)  ) {
                             return{
-                                css: {"background-color": "yellow !important"}
+                                css: {"background-color": "lightgreen !important"}
                             };                        
                         }
                         // Otherwise red
                         if(value_timeToComplete) {
                             return{
-                                css: {"background-color": "red !important"}
+                                css: {"background-color": "tomato !important"}
                             };      
                         }                  
                     }           
@@ -102,7 +102,7 @@
 
                     if(value_percentage>80){
                         return{
-                            css: {"background-color": "green !important"}
+                            css: {"background-color": "lightgreen !important"}
                         };                        
                     }
                     if(value_percentage>=60){
@@ -112,7 +112,7 @@
                     }
                     if(value_percentage>0){
                         return{
-                            css: {"background-color": "red !important"}
+                            css: {"background-color": "tomato !important"}
                         };                        
                     }
 
