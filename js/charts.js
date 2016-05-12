@@ -245,9 +245,9 @@
                       0,( weeklyData["FDPSRSTS_3"] || 0)+(weeklyData["FDPSRSTS_4"] || 0)+(weeklyData["FDPSRSTS_5"] || 0),0,
                       0,0
                       ],
-          [ "SES",  0, 0,  0,  // This is Demo data
-                    0 , 0, 0,  
-                    0, 0,  0,
+          [ "SES",  weeklyData["SES_STATUS_1"] || 0 , weeklyData["SES_STATUS_2"] || 0,  weeklyData["SES_STATUS_6"] || 0, 
+                    weeklyData["SES_STATUS_7"] || 0, weeklyData["SES_STATUS_8"] || 0, 0,  
+                    weeklyData["SES_STATUS_999"] || 0, 0,  0,
                     0,0,0,
                     0,0,0,
                     0,0,0,
@@ -269,6 +269,14 @@
                       0,0,0,
                       weeklyData["TLANCxREMSTS_1"] || 0,0
                       ],
+          [ "PNCF",  weeklyData["TLPNCSTS_1"] || 0, weeklyData["TLPNCSTS_2"] || 0 ,  weeklyData["TLPNCSTS_6"] || 0 ,  //This is demo data
+                    weeklyData["TLPNCSTS_7"] || 0 , weeklyData["TLPNCSTS_8"] || 0, 0, 
+                    weeklyData["TLPNCSTS_999"] || 0,0,0,
+                    0,0,0,
+                    0, weeklyData["TLPNCSTS_3"] || 0 ,0,
+                    0,0,0,
+                    0,0
+                    ],
           [ "VS29", 0, 0 ,  0 ,  //This is demo data
                     0 , 0, 0, 
                     0,0,0,
