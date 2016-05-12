@@ -48,6 +48,7 @@ function(keys, values, rereduce) {
 
 ///////////////////////////////////////////////////////////
 // NO NID AND NO BID
+// view: alert/NidBidEmpty
 ////////////
 // Map
 function(doc) {
@@ -71,6 +72,7 @@ function(keys, values, rereduce) {
 
 ///////////////////////////////////////////////////////////
 // Duplicate NID or BID in other cases
+// view: alert/NidBidDuplicate
 ////////////
 // Map
 function(doc) {
