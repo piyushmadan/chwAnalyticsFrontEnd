@@ -45,7 +45,7 @@ Util = {
 
  			return resultArray;
 	},
-	consolidateApiToArray : function(data , consolidateKey, keyName, valueName, arrayOfObjectName, arrayOfObjectLegendTitle){
+	consolidateApiToArray : function(data , consolidateKey, keyName, valueName, arrayOfObjectName, arrayOfObjectLegendTitle,consolidated){
 
 		// DATE: "2016-03-02"
 		// count:10
@@ -102,7 +102,7 @@ Util = {
 
 				if(indexOfkeyName){
 					var indexOfconsolidateKey = consolidatedKeyList.indexOf(data[i][consolidateKey]);
-					if(!indexOfconsolidateKey){
+					if(!indexOfconsolidateKey && indexOfconsolidateKey!==0){
 						console.log("something wrong here. Previous loop didn't work properly . "+ data[i][consolidateKey])
 					} else {
 
@@ -113,6 +113,16 @@ Util = {
 					}
 				}
 
+ 			}
+
+ 			if(consolidated){
+ 				for(var i=1; i< resultArray.length-1; i++) {
+
+	 				for(var j=1; j<resultArray[i].length; j++) {
+	 					resultArray[i+1][j] += resultArray[i][j];
+	 				}
+
+ 				}
  			}
 
 

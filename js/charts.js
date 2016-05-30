@@ -10,7 +10,10 @@
       google.setOnLoadCallback(drawAreaChart);
 
   //    google.setOnLoadCallback(drawStacked);
-      google.setOnLoadCallback(drawBarChart);
+     google.setOnLoadCallback(drawBarChart);
+     google.setOnLoadCallback(drawBarChartWeekly);
+     google.setOnLoadCallback(drawBarChartConsolidated);
+
       google.setOnLoadCallback(drawBarChart2);
    //   google.setOnLoadCallback(drawRegionsMap);
 
@@ -24,7 +27,8 @@
 
       setTimeout(function(){
         drawBarChart();
-
+        drawBarChartWeekly();
+        drawBarChartConsolidated();
       },3000
         )
 
@@ -148,8 +152,7 @@
             'Eligible MWRAs',
             'Pregnancies Identified',
             'Enrollment Consented',
-            'Live births']
-            );
+            'Live births']            );
           console.log(config.apiUrl+"FormUnitDataCount -- after arrayForDataTable");
           console.log(arrayForDataTable);
 
@@ -181,6 +184,119 @@
 
 
       }
+
+      function drawBarChartConsolidated() {
+
+        if( $("#MoreIndicatorstart").val() && $("#MoreIndicatorEnd").val()){
+          var dateString = "?startDate=" + (new Date($("#MoreIndicatorstart").val()).toISOString().substring(0, 10));
+          dateString += "&endDate="+ (new Date($("#MoreIndicatorEnd").val()).toISOString().substring(0, 10));
+        } else {
+          var dateString = "";
+        }
+
+          $.ajax({
+            url: config.apiUrl+"FormUnitDataCount"+dateString,
+            context: document.body,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("authorization", sessionStorage.getItem("authorization"));
+                xhr.setRequestHeader("Content-Type","application/json")
+            }
+          }).done(function(result) {            
+            console.log(config.apiUrl+"FormUnitDataCount -- before arrayForDataTable");
+            console.log(result.result);
+
+          var arrayForDataTable = Util.consolidateApiToArray(result.result,
+            'DATE',
+            'titleVar_Value',
+            'count',
+          [ 'DATE',
+            'FDCENCONSENT_1',
+            'FDELIGIBLE_1',
+            'FDBNFSTS_0',
+            'FDPREGSTS_1',
+            'FDPSRCONSENT_1'],
+          [ 'Time period',
+            'Surveillance Consented',
+            'Eligible MWRAs',
+            'Pregnancies Identified',
+            'Enrollment Consented',
+            'Live births'],
+            true  // consolidated / sum of previous ones / shows progress
+            );
+          console.log(config.apiUrl+"FormUnitDataCount -- after arrayForDataTable");
+          console.log(arrayForDataTable);
+
+          var data = google.visualization.arrayToDataTable(arrayForDataTable);
+
+
+      var options = {
+        legend: { position: 'top'},
+       };
+          var chart =  new google.visualization.LineChart(document.getElementById('chart_div4_consolidated'));
+  
+            chart.draw(data, options);
+ 
+          });
+
+
+      }
+
+
+      function drawBarChartWeekly() {
+
+        if( $("#MoreIndicatorstart").val() && $("#MoreIndicatorEnd").val()){
+          var dateString = "?startDate=" + (new Date($("#MoreIndicatorstart").val()).toISOString().substring(0, 10));
+          dateString += "&endDate="+ (new Date($("#MoreIndicatorEnd").val()).toISOString().substring(0, 10));
+        } else {
+          var dateString = "";
+        }
+
+          $.ajax({
+            url: config.apiUrl+"FormUnitDataCount"+dateString+"&weekly=true",
+            context: document.body,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("authorization", sessionStorage.getItem("authorization"));
+                xhr.setRequestHeader("Content-Type","application/json")
+            }
+          }).done(function(result) {            
+            console.log(config.apiUrl+"FormUnitDataCount -- before arrayForDataTable");
+            console.log(result.result);
+
+          var arrayForDataTable = Util.consolidateApiToArray(result.result,
+            'DATE',
+            'titleVar_Value',
+            'count',
+          [ 'DATE',
+            'FDCENCONSENT_1',
+            'FDELIGIBLE_1',
+            'FDBNFSTS_0',
+            'FDPREGSTS_1',
+            'FDPSRCONSENT_1'],
+          [ 'Time period',
+            'Surveillance Consented',
+            'Eligible MWRAs',
+            'Pregnancies Identified',
+            'Enrollment Consented',
+            'Live births']
+            );
+          console.log(config.apiUrl+"FormUnitDataCount -- after arrayForDataTable");
+          console.log(arrayForDataTable);
+
+          var data = google.visualization.arrayToDataTable(arrayForDataTable);
+
+
+      var options = {
+        legend: { position: 'top'},
+       };
+          var chart =  new google.visualization.LineChart(document.getElementById('chart_div4_weekly'));
+  
+            chart.draw(data, options);
+ 
+          });
+
+
+      }
+
 
 
       function drawBarChart2() {

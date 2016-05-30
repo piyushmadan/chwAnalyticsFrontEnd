@@ -86,14 +86,21 @@
                 <div class="input-daterange" id="datepicker form-control" >
                     <input type="text" class="input-small" id="MoreIndicatorstart" value="01/20/2016"/>  to
                     <input type="text" class="input-small" id="MoreIndicatorEnd" value="05/10/2016" />
-                    <button onclick="drawBarChart();">Update</button>
+                    <button onclick="drawBarChart();drawBarChartWeekly();drawBarChartConsolidated();">Update</button>
                 </div>
           </div>
 
           <div> 
                 <div hidden id="chart_div3" class="gchart col-md-6"></div>
-                <div id="chart_div4" class="gchart col-md-12"></div>
+                <br>  Daily <br>                
 
+                <div id="chart_div4" class="gchart col-md-12"></div>
+                <br>  Progress <br>                
+
+                <div id="chart_div4_consolidated" class="gchart col-md-12"></div>
+                <br>  Weekly <br>
+
+                <div id="chart_div4_weekly" class="gchart col-md-12"></div>
 
           </div>
 
